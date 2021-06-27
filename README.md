@@ -1,5 +1,5 @@
 # ELeFHAnt
-Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use interface for users to annotate clusters of single cells and harmonize labels across single cell datasets to generate a unified atlas. It provides users with a flexibility of choosing a machine learning based classifiers or let ELeFHAnt automatically use the power of robust classifiers like randomForest and SVM (Support Vector Machines) to make predictions. It has two functions 1) CelltypeAnnotation 2) LabelHarmonization.
+Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells and harmonize labels across single cell datasets to generate a unified atlas. It provides users with a flexibility of choosing a machine learning based classifiers or let ELeFHAnt automatically use the power of robust classifiers like randomForest and SVM (Support Vector Machines) to make predictions. It has two functions 1) CelltypeAnnotation 2) LabelHarmonization.
 
 ## Installation
 ```
@@ -58,7 +58,7 @@ Ensemble learning based classsification uses both randomForest and SVM predictio
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
-CelltypeAnnotation(reference=pbmc, query=mydata, downsample=TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE)
+CelltypeAnnotation(reference=reference.object, query=mydata.object, downsample=TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE)
 ## What each parameter is?
 ```
 reference: a processed Seurat Object with Celltypes column in metadata
