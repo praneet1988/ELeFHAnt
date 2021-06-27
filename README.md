@@ -8,6 +8,13 @@ devtools::install_github('praneet1988/ELeFHAnt')
 library(ELeFHAnt)
 ```
 
+## Authors
+```
+Praneet Chaturvedi (MS Bioinformatics) : Lead Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, Cincinnati, OH - USA
+
+Konrad Thorner (MS Bioinformatics) : Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, OH - USA
+```
+
 ## Random Forest
 Random Forests is a powerful tool used extensively across a multitude of field. It is based on generating a large number of decision trees, each constructed using a different subset of your training set. These subsets are usually selected by sampling at random and with replacement from the original data set. The decision trees are then used to identify a classification consensus by selecting the most common output.
 
@@ -120,7 +127,7 @@ validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by c
 ```
 
 # Citation
-Please Github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
+Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
 
 # Bugs/Issues
 Please report bugs, issues and improvements using the issues section of github.
