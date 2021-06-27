@@ -27,7 +27,7 @@ Imports:
 	caTools,
 	e1071,
 	ggplot2,
-	class
+	class,
 	splitstackshape
 Depends:
 	Seurat,
@@ -39,7 +39,7 @@ Depends:
 	caTools,
 	e1071,
 	ggplot2,
-	class
+	class,
 	splitstackshape
 Suggests: 
     rmarkdown,
