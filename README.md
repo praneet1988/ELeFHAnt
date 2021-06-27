@@ -1,0 +1,2 @@
+# ELeFHAnt
+Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use interface for users to annotate clusters of single cells and harmonize labels across single cell datasets to generate a unified atlas. It provides users with a flexibility of choosing a machine learning based classifiers or let ELeFHAnt automatically use the power of robust classifiers like randomForest and SVM (Support Vector Machines) to make predictions. It has two functions 1) CelltypeAnnotation 2) LabelHarmonization.
