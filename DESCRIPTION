@@ -28,6 +28,7 @@ Imports:
 	e1071,
 	ggplot2,
 	class
+	splitstackshape
 Depends:
 	Seurat,
 	dplyr,
@@ -39,6 +40,7 @@ Depends:
 	e1071,
 	ggplot2,
 	class
+	splitstackshape
 Suggests: 
     rmarkdown,
     knitr
