@@ -340,7 +340,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
  			integration.validation.use <- subset(integrated.atlas, idents = rf_celltype_pred$HarmonizedLabels_UsingRF)
  			validation = ValidatePredictions(reference = integration.validation.use, query = integrated.atlas, celltype_assignments = rf_celltype_pred)
  			message ("Validation completed. Please see summary of number of shared markers below")
- 			message (validation)
+ 			print (validation)
  			write.table(validation, "Summary_numberofsharedmarkers_between_AssignedCelltypesandIntegratedClusters.txt", quote=F, sep="\t")
  			return(integrated.atlas)
  		}
@@ -370,7 +370,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
  			integrated.validation.use <- subset(integrated.atlas, idents = svm_celltype_pred$PredictedCelltype_UsingSVM)
  			validation = ValidatePredictions(reference = integrated.validation.use, query = integrated.atlas, celltype_assignments = svm_celltype_pred)
  			message ("Validation completed. Please see summary of number of shared markers below")
- 			message (validation)
+ 			print (validation)
  			write.table(validation, "Summary_numberofsharedmarkers_between_AssignedCelltypesandIntegratedClusters.txt", quote=F, sep="\t")
  			return(integrated.atlas)
  		}
@@ -445,7 +445,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
  			integrated.validation.use <- subset(integrated.atlas, idents = consensus_celltype_pred$HarmonizedLabels_UsingEnsemble)
  			validation = ValidatePredictions(reference = integrated.validation.use, query = integrated.atlas, celltype_assignments = consensus_celltype_pred)
  			message ("Validation completed. Please see summary of number of shared markers below")
- 			message (validation)
+ 			print (validation)
  			write.table(validation, "Summary_numberofsharedmarkers_between_AssignedCelltypesandQueryClusters.txt", quote=F, sep="\t")
  			return(integrated.atlas)
  		}
