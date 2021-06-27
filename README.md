@@ -1,10 +1,11 @@
 # ELeFHAnt
 Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use interface for users to annotate clusters of single cells and harmonize labels across single cell datasets to generate a unified atlas. It provides users with a flexibility of choosing a machine learning based classifiers or let ELeFHAnt automatically use the power of robust classifiers like randomForest and SVM (Support Vector Machines) to make predictions. It has two functions 1) CelltypeAnnotation 2) LabelHarmonization.
 
-# Installation
+## Installation
 ```
 library(devtools)
 devtools::install_github('praneet1988/ELeFHAnt')
+library(ELeFHAnt)
 ```
 
 ## Random Forest
@@ -21,3 +22,41 @@ Celltype annotation is a function to annotate celltypes in a single cell dataset
 
 ## Label Harmonization Function
 Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets. It requires a list of processed Seurat Objects with Celltypes column in metadata or a integrated seurat object (seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method.
+
+# Celltype Annotation
+Celltype annotation is a function to annotate celltypes in a single cell datasets
+
+## Requirements
+It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method to learn celltypes from reference dataset and then predict celltypes for query dataset.
+
+## How the function works?
+### Merge Reference and Query
+Merge reference and query into a seurat object
+### Normalization
+Run Log2 Normalization on the merged object using NormalizeData function in Seurat
+### Feature Selection
+Obtain highy variable features from the merged data using FindVariableFeatures function in Seurat
+### Scaling
+Scale the merged object for highly variable features using ScaleData function in Seurat
+### Generate train and test data
+Training set is the reference data with celltypes extracted from scaled data. Test set is the query data with seurat_clusters extracted from scaled data.
+### Train Classifiers
+Training data is used for training randomForest and SVM classifiers.
+### Predict Celltypes
+Each classifier is after training is then used to classify celltypes for the test data
+### Ensemble Learning
+Ensemble learning based classsification uses both randomForest and SVM predictions to define final predictions. It does that by assigning weights (accuracy while learning) to the predictions from each classifier
+
+## How to use the function?
+### Load Library ELeFHAnt
+library(ELeFHAnt)
+### Assing parameters in the function
+CelltypeAnnotation(reference=pbmc, query=mydata, downsample=TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE)
+## What each parameter is?
+reference: a processed Seurat Object with Celltypes column in metadata
+query: a processed seurat object with seurat_clusters column in metadata
+downsample: logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
+downsample_to: a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters resspectively
+classification.method: choose classification method for learning and predicting celltypes. randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)
+crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model
+validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by computing number of markers shared between assigned celltype and annotated cluster
