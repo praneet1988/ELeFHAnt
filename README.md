@@ -53,6 +53,7 @@ library(ELeFHAnt)
 ### Assing parameters in the function
 CelltypeAnnotation(reference=pbmc, query=mydata, downsample=TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE)
 ## What each parameter is?
+```
 reference: a processed Seurat Object with Celltypes column in metadata
 query: a processed seurat object with seurat_clusters column in metadata
 downsample: logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
@@ -60,3 +61,4 @@ downsample_to: a numerical value > 1 to downsample cells [Default: 100] in refer
 classification.method: choose classification method for learning and predicting celltypes. randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)
 crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model
 validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by computing number of markers shared between assigned celltype and annotated cluster
+```
