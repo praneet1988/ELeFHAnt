@@ -130,9 +130,7 @@ validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by c
 ```
 
 # ELeFHAnt Reference datasets as plugins
-```
-https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
-```
+Download pre-processed reference datasets for Celltype Annotation or Label Harmonization: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
