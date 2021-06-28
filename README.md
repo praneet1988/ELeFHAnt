@@ -132,6 +132,10 @@ validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by c
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation or Label Harmonization: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
+# Label Harmonization Example
+To demonstrate LabelHarmonization we used two datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316). Data shown below is based on subsetting 500 cells per celltype in each dataset.
+![Graph](Examples/LabelHarmonization_Example.png)
+
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
 
