@@ -135,6 +135,10 @@ Download pre-processed reference datasets for Celltype Annotation or Label Harmo
 # Label Harmonization Example
 To demonstrate LabelHarmonization we used two datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316). Data shown below is based on subsetting 500 cells per celltype in each dataset.
 ![Graph](Examples/LabelHarmonization_Example.png)
+We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment and making it easy to infer the data clearly.
+More examples coming soon.
+
+
 
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
