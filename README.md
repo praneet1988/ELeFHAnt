@@ -132,13 +132,18 @@ validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by c
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation or Label Harmonization: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
+# Celltype Annotation Example
+To demonstrate  Celltype Annotation: reference was set ForegutEnoderm mouse from E8.5 to E9.5 (https://www.nature.com/articles/s41467-020-17968-x) and query was set to foregut endoderm cells from E10.5 (https://elifesciences.org/articles/55526). No downsampling was performed.
+![Graph](Examples/CelltypeAnnotation_Example.png)
+We were successful at automating annotating celltypes in dataset coming from a later stage. Below is the annotation from publication https://elifesciences.org/articles/55526
+![Graph](Examples/OriginalLabels.png)
+We see great consensus in celltype annotation.
+
 # Label Harmonization Example
-To demonstrate LabelHarmonization we used two datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset.
+To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset.
 ![Graph](Examples/LabelHarmonization_Example.png)
 We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment and making it easy to infer the data clearly.
 More examples coming soon.
-
-
 
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
