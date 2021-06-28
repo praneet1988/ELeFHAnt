@@ -15,6 +15,9 @@ Praneet Chaturvedi (MS Bioinformatics) : Lead Analyst Bioinformatics, Cincinnati
 Konrad Thorner (MS Bioinformatics) : Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, OH - USA
 ```
 
+## ELeFHAnt Model
+![Graph](ELeFHAnt.png)
+
 ## Random Forest
 Random Forests is a powerful tool used extensively across a multitude of field. It is based on generating a large number of decision trees, each constructed using a different subset of your training set. These subsets are usually selected by sampling at random and with replacement from the original data set. The decision trees are then used to identify a classification consensus by selecting the most common output.
 
