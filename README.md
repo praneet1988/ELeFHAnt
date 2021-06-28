@@ -8,7 +8,7 @@ devtools::install_github('praneet1988/ELeFHAnt')
 library(ELeFHAnt)
 ```
 
-## Authors
+## Developers
 ```
 Praneet Chaturvedi (MS Bioinformatics) : Lead Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, Cincinnati, OH - USA
 
