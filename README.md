@@ -83,7 +83,7 @@ validatePredictions: logical indicator (TRUE or FALSE) to asses predictions by c
 Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets.
 
 ## Requirements
-It requires a list of processed Seurat Objects with Celltypes column in metadata or a integrated seurat object (integrated seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method to harmonize celltypes.
+It requires a list of processed Seurat Objects with Celltypes column in metadata or a integrated seurat object (integrated seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method to harmonize celltypes. Please see: DefaultAssay of eaach object should be set to "RNA".
 
 ## How the function works?
 ### Integrate seurat objects
@@ -109,7 +109,7 @@ LabelHarmonization(seurat.objects = c(seuratbject1, seuratbject2, seuratbject3, 
 
 ## What each parameter is?
 ```
-seurat.objects: a list of processed seurat objects with Celltypes column in their respective meta.data to perform integration on.
+seurat.objects: a list of processed seurat objects (DefaultAssay should be set to "RNA") with Celltypes column in their respective meta.data to perform integration on.
 
 perform_integration: logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 
