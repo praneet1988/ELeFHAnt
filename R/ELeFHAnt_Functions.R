@@ -242,9 +242,9 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALS
 #' Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets.
 #' It requires a list of processed Seurat Objects with Celltypes column in metadata or a integrated seurat object
 #' (seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
-#' to harmonize celltypes.
+#' to harmonize celltypes. Please See: DefaultAssay of each object should be set to "RNA"
 #' 
-#' @param seurat.objects a list of processed seurat objects with Celltypes column in their respective meta.data to perform integration on
+#' @param seurat.objects a list of processed seurat objects (please set Default Assay to "RNA") with Celltypes column in their respective meta.data to perform integration on
 #' @param perform_integration logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 #' @param integrated.atlas an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample seurat objects enabling fast computation
@@ -273,11 +273,6 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 		}
 		if(downsample == FALSE)
 		{
-			message ("Setting idents of seurat objects to Celltypes")
-			##seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
-				##DefaultAssay(x) <- "RNA"
-    				##Idents(x) <- x$Celltypes
-			###})
 			seurat.objects <- seurat.objects
 		}
 		message ("Starting integration using Seurat")
