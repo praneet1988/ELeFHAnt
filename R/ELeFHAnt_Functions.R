@@ -276,8 +276,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 			message ("Setting idents of seurat objects to Celltypes")
 			seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
 				DefaultAssay(x) <- "RNA"
-				x <- FindVariableFeatures(x, selection.method = "vst", nfeatures = 2000)
-    				###Idents(x) <- x$Celltypes
+    				Idents(x) <- x$Celltypes
 			})
 		}
 		message ("Starting integration using Seurat")
