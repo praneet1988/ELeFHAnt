@@ -265,10 +265,10 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 			message ("Downsampling seurat objects")
 			seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
 				DefaultAssay(x) <- "RNA"
-    			Idents(x) <- x$Celltypes
-    			x <- subset(x, downsample = downsample_to)
-    			x <- NormalizeData(x)
-    			x <- FindVariableFeatures(x, selection.method = "vst", nfeatures = 2000)
+    				Idents(x) <- x$Celltypes
+    				x <- subset(x, downsample = downsample_to)
+    				x <- NormalizeData(x)
+    				x <- FindVariableFeatures(x, selection.method = "vst", nfeatures = 2000)
 			})
 		}
 		if(downsample == FALSE)
@@ -276,7 +276,8 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 			message ("Setting idents of seurat objects to Celltypes")
 			seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
 				DefaultAssay(x) <- "RNA"
-    			Idents(x) <- x$Celltypes
+				x <- FindVariableFeatures(x, selection.method = "vst", nfeatures = 2000)
+    				Idents(x) <- x$Celltypes
 			})
 		}
 		message ("Starting integration using Seurat")
