@@ -278,6 +278,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 				DefaultAssay(x) <- "RNA"
     				Idents(x) <- x$Celltypes
 			})
+			seurat.objects <- list(seurat.objects)
 		}
 		message ("Starting integration using Seurat")
 		integration.anchors <- FindIntegrationAnchors(object.list = seurat.objects)
