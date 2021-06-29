@@ -274,14 +274,14 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 		if(downsample == FALSE)
 		{
 			message ("Setting idents of seurat objects to Celltypes")
-			seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
-				DefaultAssay(x) <- "RNA"
-    				Idents(x) <- x$Celltypes
-			})
-			seurat.objects <- list(seurat.objects)
+			##seurat.objects <- lapply(X = seurat.objects, FUN = function(x) {
+				##DefaultAssay(x) <- "RNA"
+    				##Idents(x) <- x$Celltypes
+			###})
+			seurat.objects <- seurat.objects
 		}
 		message ("Starting integration using Seurat")
-		integration.anchors <- FindIntegrationAnchors(object.list = seurat.objects)
+		integration.anchors <- FindIntegrationAnchors(object.list = seurat.objects, assay = "RNA")
 		integrated.atlas <- IntegrateData(anchorset = integration.anchors)
 		DefaultAssay(integrated.atlas) <- "integrated"
 		message ("Integration Completed. Performing Scaling, Dimension reduction and clustering")
