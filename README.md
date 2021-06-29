@@ -7,6 +7,7 @@ library(devtools)
 devtools::install_github('praneet1988/ELeFHAnt')
 library(ELeFHAnt)
 ```
+If you encounter problems, try manually installing from the .zip or .tar.gz file with "R CMD INSTALL". 
 
 ## Developers
 ```
