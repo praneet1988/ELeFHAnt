@@ -281,7 +281,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 			seurat.objects <- seurat.objects
 		}
 		message ("Starting integration using Seurat")
-		integration.anchors <- FindIntegrationAnchors(object.list = seurat.objects, assay = "RNA")
+		integration.anchors <- FindIntegrationAnchors(object.list = seurat.objects)
 		integrated.atlas <- IntegrateData(anchorset = integration.anchors)
 		DefaultAssay(integrated.atlas) <- "integrated"
 		message ("Integration Completed. Performing Scaling, Dimension reduction and clustering")
