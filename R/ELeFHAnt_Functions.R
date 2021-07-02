@@ -363,7 +363,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
  		{
  			message ("SVM based harmonization completed. Starting validation of celltype assignments")
  			Idents(integrated.atlas) <- integrated.atlas$Celltypes
- 			integrated.validation.use <- subset(integrated.atlas, idents = svm_celltype_pred$PredictedCelltype_UsingSVM)
+ 			integrated.validation.use <- subset(integrated.atlas, idents = svm_celltype_pred$HarmonizedLabels_UsingSVM)
  			validation = ValidatePredictions(reference = integrated.validation.use, query = integrated.atlas, celltype_assignments = svm_celltype_pred)
  			message ("Validation completed. Please see summary of number of shared markers below")
  			print (validation)
