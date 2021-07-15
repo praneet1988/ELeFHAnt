@@ -33,6 +33,9 @@ Celltype annotation is a function to annotate celltypes in a single cell dataset
 ## Label Harmonization Function
 Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets. It requires a list of processed Seurat Objects with Celltypes column in metadata or a integrated seurat object (seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method.
 
+# Deduce Relationship Function
+Deduce Relationship is a function to compare the similarity between celltypes across single cell datasets. The output is a heatmap that shows which celltype in one reference best corresponds to a celltype in another reference. It requires a two reference datasets (both a processed Seurat Object with Celltypes column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method.
+
 # Celltype Annotation
 Celltype annotation is a function to annotate celltypes in a single cell datasets
 
@@ -144,6 +147,15 @@ To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(http
 ![Graph](Examples/LabelHarmonization_Example.png)
 We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment and making it easy to infer the data clearly.
 More examples coming soon.
+
+# Reproducibility
+To assess reproducibility, each function was run 5 times with varying numbers of cells used during subsampling, ranging from 100 to 500. 
+
+For Celltype Annotation, changes in the cell labels assigned to the query remain stable when 200 to 500 cells are used.
+
+For Label Harmonization, we find that cell labels remain approximately 80% consistent across . Harmonization does benefit from greater number of cells used.
+
+Lastly, for Deduce Relationship,
 
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
