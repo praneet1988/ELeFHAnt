@@ -208,9 +208,14 @@ Download pre-processed reference datasets for Celltype Annotation, Label Harmoni
 # Celltype Annotation Example
 ## Example1
 To demonstrate  Celltype Annotation: reference was set ForegutEnoderm mouse from E8.5 to E9.5 (https://www.nature.com/articles/s41467-020-17968-x) and query was set to foregut endoderm cells from E10.5 (https://elifesciences.org/articles/55526). No downsampling was performed.
+
+### Predicted celltypes for query using Ensemble learning
 ![Graph](Examples/CelltypeAnnotation_Example.png)
-We were successful at automating annotating celltypes in dataset coming from a later stage. Below is the annotation from publication https://elifesciences.org/articles/55526
+
+We were successful at automating annotating celltypes in dataset coming from a later stage. Below is the celltype annotation from publication https://elifesciences.org/articles/55526
+
 ![Graph](Examples/OriginalLabels.png)
+
 We see great consensus in celltype annotation.
 
 ## Example2
