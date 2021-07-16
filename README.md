@@ -250,11 +250,21 @@ The output of Deduce Relationship is a representation of the confusion matrix as
 # Reproducibility
 To assess reproducibility, each function was run 5 times with varying numbers of cells used during subsampling, ranging from 100 to 500. This will also determine what number of examples during training leads to the best performance for the SVM and Random Forest classifers.
 
-For Celltype Annotation, the predicted cell labels assigned to the query differ for 100 cells but remain stable when 200 to 500 cells are subsampled. 
+For Celltype Annotation, the predicted cell labels assigned to the query differ for 100 cells but remain stable when 200 to 500 cells are subsampled.
+Following datasets were used. Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence Lab as query
 
-For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used.
+### Celltype Predictions using 100, 300 and 500 cells per Celltypes resepctively
+![Graph](Examples/annotation_reproduce.png)
 
-Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. This is similar to the results of Celltype Annotation, which this function is a variation of.
+For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. Following datasets were used: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
+
+### Celltype harmonization using 100, 300 and 500 cells per Celltypes respectively
+![Graph](Examples/harmonization_reproduce.png)
+
+Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. Following datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence Lab as reference2
+
+### Inferring relationships across Celltypes using 100, 300 and 500 Celltypes between datasets
+![Graph](Examples/deduce_reproduce.png)
 
 # Citation
 Please cite github page if using for research purposes (https://github.com/praneet1988/ELeFHAnt)
