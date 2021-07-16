@@ -216,6 +216,16 @@ We see great consensus in celltype annotation.
 ## Example2
 To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence Lab as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively for enabling fast computation.
 
+### GutCell data as Reference
+![Graph](Examples/GutCell_Reference.png)
+
+### Fetal Intestine (Dr. Spence's Lab) as Query
+![Graph](Examples/FetalIntestine_SpenceLab_Query.png)
+
+### Predicted celltypes for query using Ensemble learning
+![Graph](Examples/CelltypeAnnotation_Example2.png)
+
+
 # Label Harmonization Example
 To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset.
 ![Graph](Examples/LabelHarmonization_Example.png)
