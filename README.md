@@ -30,7 +30,7 @@ Konrad Thorner (MS Bioinformatics) : Analyst Bioinformatics, Cincinnati Children
 ```
 
 ## ELeFHAnt Model
-![Graph](ELeFHAnt.pdf)
+[ELeFHAnt.pdf](https://github.com/praneet1988/ELeFHAnt/blob/main/ELeFHAnt.pdf)
 
 ## Random Forest
 Random Forests is a powerful tool used extensively across a multitude of field. It is based on generating a large number of decision trees, each constructed using a different subset of your training set. These subsets are usually selected by sampling at random and with replacement from the original data set. The decision trees are then used to identify a classification consensus by selecting the most common output.
