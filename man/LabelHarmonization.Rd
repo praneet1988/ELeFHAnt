@@ -14,7 +14,8 @@ LabelHarmonization(
   resolution = 0.5,
   classification.method = c("randomForest", "SVM", "Ensemble"),
   crossvalidationSVM = 10,
-  validatePredictions = TRUE
+  validatePredictions = TRUE,
+  selectanchorfeatures = 2000
 )
 }
 \arguments{
@@ -37,7 +38,9 @@ Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensembl
 
 \item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model}
 
-\item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by computing number of markers shared between assigned celltype and annotated cluster}
+\item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis}
+
+\item{selectanchorfeatures}{number of anchor features to use for integrating datasets (Default: 2000)}
 }
 \value{
 integrated seurat object with harmonized celltypes added to meta.data of the object
