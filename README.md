@@ -10,7 +10,7 @@ Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) pr
 6) cost parameter of SVM is now set to 10 
 
 ## Where to find Version 1
-Users can still access ELeFHAnt v1 from releases section of GitHub
+Users can still access ELeFHAnt v1 from Releases section of GitHub
 
 ## Installation
 ```
