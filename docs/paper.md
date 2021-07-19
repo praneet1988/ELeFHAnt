@@ -42,7 +42,7 @@ The attributes of our three example datasets of early gut development are shown 
 Table 1
 ![Table 1](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png)
 
-Celltype Annotation
+### Celltype Annotation
 
 To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmentaite:2020] as reference and Fetal intestinal data [@Yu:2021] as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively for enabling fast computation.
 
@@ -59,7 +59,7 @@ C
 
 (A) represents celltypes in the reference dataset displayed on a UMAP. (B) represents Seurat clusters displayed on the query, and (C) represents the predicted celltypes as determined by ELeFHAnt's ensemble approach.
 
-Label Harmonization
+### Label Harmonization
 
 To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas [@Elmentaite:2020]) 2) Fetal intestinal data [@Yu:2021] from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer [@Fawkner-Corbett:2021].  Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize the atlas of ~125k cells.
 
@@ -68,7 +68,7 @@ Figure 3
 
 The UMAP on the left represents the 144 total celltypes from the three datasets after integration. The UMAP on the right is the result of ELeFHAnt's harmonization with the ensemble method, showing the resulting labels for each cluster. 
 
-Deduce Relationship
+### Deduce Relationship
 
 To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas [@Elmentaite:2020] 2) Fetal intestinal data [@Fawkner-Corbett:2021] from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
 
