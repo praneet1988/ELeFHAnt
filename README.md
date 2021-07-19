@@ -216,7 +216,9 @@ selectvarfeatures: number of variable features to select while training (default
 # Tutorials
 
 #### Celltype Annotation Tutorial
-https://dl.dropboxusercontent.com/s/3cr5bxzwtifoqg3/CelltypeAnnotation_Tutorial.html?dl=0
+Please download the .html file if you do not have a dropbox account. You can open the downloaded file in the browser of your choice to go through the tutorial.
+
+https://www.dropbox.com/s/3cr5bxzwtifoqg3/CelltypeAnnotation_Tutorial.html?dl=0
 
 #### Label Harmonization Tutorial
 https://www.dropbox.com/s/q8lfej7ucoi148w/LabelHarmonization_Tutorial.html?dl=0
