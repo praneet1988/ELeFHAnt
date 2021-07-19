@@ -38,9 +38,9 @@ Model
 
 Celltype Annotation
 
-![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=20% }
-![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=20% }
-![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=20% }
+![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){:height="50%" width="50%"}
+![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){:height="50%" width="50%"}
+![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){:height="50%" width="50%"}
 
 Label Harmonization
 ![Datasets used](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png){ width=20% }
