@@ -213,6 +213,18 @@ selectvarfeatures: number of variable features to select while training (default
 2) Confusion Matrices from each classification.method and heatmaps are automatically saved in current working directory
 ```
 
+# Tutorials
+
+#### Celltype Annotation Tutorial
+https://www.dropbox.com/s/3cr5bxzwtifoqg3/CelltypeAnnotation_Tutorial.html?dl=0
+
+#### Label Harmonization Tutorial
+https://www.dropbox.com/s/q8lfej7ucoi148w/LabelHarmonization_Tutorial.html?dl=0
+
+#### Deduce Relationship Tutorial
+https://www.dropbox.com/s/vrqc7bxxwsyd83g/DeduceRelationship_Tutorial.html?dl=0
+
+
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
@@ -258,16 +270,6 @@ To demonstrate Deduce Relationship we used two datasets that were also uses in t
 
 The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We can see that the related celltypes all make biological sense, in particular all immune cells being assigned to "Immune cells", and the mesenchyme subtypes being assigned to "Mesoderm 2".
 
-# Tutorials
-
-#### Celltype Annotation Tutorial
-https://github.com/praneet1988/ELeFHAnt/blob/main/Tutorial/CelltypeAnnotation_Tutorial.html
-
-#### Label Harmonization Tutorial
-https://github.com/praneet1988/ELeFHAnt/blob/main/Tutorial/LabelHarmonization_Tutorial.html
-
-#### Deduce Relationship Tutorial
-https://github.com/praneet1988/ELeFHAnt/blob/main/Tutorial/DeduceRelationship_Tutorial.html
 
 # Reproducibility
 To assess reproducibility, each function was run 5 times with varying numbers of cells used during subsampling, ranging from 100 to 500. This will also determine what number of examples during training leads to the best performance for the SVM and Random Forest classifers.
