@@ -34,7 +34,7 @@ ELeFHAnt has been tested on multiple public datasets during development. It has 
 # Examples
 
 Model
-![Model diagram\label{fig:example}](ELeFHAnt.png)
+![Model diagram](main/ELeFHAnt.png)
 
 Celltype Annotation
 
