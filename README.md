@@ -25,8 +25,10 @@ If you encounter problems, try manually installing from the .zip or .tar.gz file
 ## Developers
 ```
 Praneet Chaturvedi (MS Bioinformatics) : Lead Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, Cincinnati, OH - USA
+GitHub Username: praneet1988
 
 Konrad Thorner (MS Bioinformatics) : Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, OH - USA
+GitHub Username: kthorner
 ```
 
 ## ELeFHAnt Model
