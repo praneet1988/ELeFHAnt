@@ -38,6 +38,10 @@ Model
 
 Celltype Annotation
 
+![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=50% }
+![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=50% }
+![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=50% }
+
 Label Harmonization
 
 Deduce Relationship
