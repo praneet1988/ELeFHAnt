@@ -31,23 +31,33 @@ ELeFHAnt is a supervised machine learning-based tool that enables researchers to
 
 ELeFHAnt has been tested on multiple public datasets during development. It has also been used internally within Cincinnati Children’s Hospital Medical Center across multiple projects, including annotation of snRNA (single nucleus RNA) sequencing with a harmonized gut cell atlas. 
 
-# Examples
+# Overview and Examples
+
+ELEFHAnt makes use of Seurat for the initial input data and pre-processing. It will then generate the training and test sets from the reference and query respectively, with optional subsampling. SVM and Random Forest are the classifiers that can be used seperately or in an ensemble. Classification accuracy of both are used to assign weights to the predictions from each classifier. These weighted confusion matrices are normalized based on the largest number of cells shared among celltypes and assigned clusters. They are then added together for the final ensemble predictions.
 
 Model
-![Model diagram](https://github.com/praneet1988/ELeFHAnt/blob/main/ELeFHAnt.png){ width=20% }
+![Model diagram](https://github.com/praneet1988/ELeFHAnt/blob/main/ELeFHAnt.png)
 
 Celltype Annotation
 
-![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){:height="50%" width="50%"}
-![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){:height="50%" width="50%"}
-![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){:height="50%" width="50%"}
+To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence Lab as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively for enabling fast computation.
+
+![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png)
+![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png)
+![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png)
 
 Label Harmonization
-![Datasets used](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png){ width=20% }
-![Before and after harmonization](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/HarmonizationExample_ELeFHAnt.png){ width=20% }
+
+To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). The attributes of each dataset are shown below as well as those of the integrated object. Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize the atlas of ~125k cells.
+
+![Datasets used](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png)
+![Before and after harmonization](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/HarmonizationExample_ELeFHAnt.png)
 
 Deduce Relationship
-![Celltype relationship heatmap](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/DeduceRelationship_Example.png){ width=20% }
+
+To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
+
+![Celltype relationship heatmap](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/DeduceRelationship_Example.png)
 
 # Acknowledgements
 
