@@ -1,0 +1,67 @@
+---
+title: "Deduce Relationship using ELeFHAnt Tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Deduce Relationship using ELeFHAnt Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Introduction to ELeFHAnt: 
+Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with a flexibility of choosing a machine learning based classifiers or let ELeFHAnt automatically use the power of robust classifiers like randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship.
+
+DeduceRelationship Tutorial:
+
+Step1:
+Preparing reference1 and reference2 datasets (Please see: ELeFHAnt currently only accepts seurat objects. Please follow Seurat's Tutorial on how to generate a seurat object from raw counts / h5 etc.: https://satijalab.org/seurat/articles/pbmc3k_tutorial.html)
+
+For example purpooses, let's download download reference1 and reference2 from ELeFHAnt plugin datasets using the following link: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
+
+For this tutorial we will use reference1 as Gut_Atlas_duojejunum.rds and reference2 as FetalTissues_human_JasonSpenceLab.rds.
+
+```{r prepareDatasets}
+library(ELeFHAnt)
+
+# read in reference1 and reference2
+reference1 = readRDS('Gut_Atlas_duojejunum.rds')
+reference2 = readRDS('FetalTissues_human_JasonSpenceLab.rds')
+
+# let's look at the metadata of each reference1 and reference2 seurat object
+head(reference1@meta.data)
+head(reference2@meta.data)
+
+# let's add Celltypes column to reference1, based on annotated celltypes column cell_name_detailed
+reference1$Celltypes <- reference1$cell_name_detailed
+
+# let's add Celltypes column to reference2, based on annotated celltypes column Cell_type
+reference2$Celltypes <- reference2$Cell_type
+
+# let's set the assay of each reference1 and reference2 to RNA
+DefaultAssay(reference1) <- "RNA"
+DefaultAssay(reference2) <- "RNA"
+
+# Our reference1 and reference2 are now prepared for DeduceRelationship
+```
+
+Step2:
+Deduce Relationship using ELeFHAnt. ELeFHAnt outputs a ggplot2 heatmap object and also saves the heatmap in current working directory.
+For this example we are downsampling each reference1 and reference2 to 100 cells per Celltypes respectively.
+Downsampling is recommended for enabling fast computation. Please see Reproducuibility setcion on GitHub (https://github.com/praneet1988/ELeFHAnt) on deciding the value for downsample_to.
+```{r DeduceRelationship}
+# Running ELeFHAnt LabelHarmonization
+out = DeduceRelationship(reference1 = reference1, reference2 = reference2, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", selectvarfeatures = 2000)
+```
+
+Step3:
+Visualizing relationship among celltypes between reference1 and reference2
+```{r RelationshipVisualization, fig.height = 15, fig.width = 15}
+# Visualizing Relationships
+out
+```
