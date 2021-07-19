@@ -34,17 +34,20 @@ ELeFHAnt has been tested on multiple public datasets during development. It has 
 # Examples
 
 Model
-![Model diagram](https://github.com/praneet1988/ELeFHAnt/blob/main/ELeFHAnt.png)
+![Model diagram](https://github.com/praneet1988/ELeFHAnt/blob/main/ELeFHAnt.png){ width=20% }
 
 Celltype Annotation
 
-![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=50% }
-![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=50% }
-![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=50% }
+![Reference](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=20% }
+![Query](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=20% }
+![Output](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=20% }
 
 Label Harmonization
+![Datasets used](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png){ width=20% }
+![Before and after harmonization](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/HarmonizationExample_ELeFHAnt.png){ width=20% }
 
 Deduce Relationship
+![Celltype relationship heatmap](https://github.com/praneet1988/ELeFHAnt/blob/main/Examples/DeduceRelationship_Example.png){ width=20% }
 
 # Acknowledgements
 
