@@ -297,4 +297,7 @@ Lastly, for Deduce Relationship, the heatmaps display little variability even be
 Please cite our GitHub page if using for research purposes (https://github.com/praneet1988/ELeFHAnt).
 
 # Bugs/Issues
-Please report bugs, issues and improvements using the issues section of the GitHub page. 
+Please report bugs, issues and improvements using the issues section of the GitHub page.
+
+# Contribute to Code
+Please open pull request to contribute to existing code interms of improvements / new features / bugs.
