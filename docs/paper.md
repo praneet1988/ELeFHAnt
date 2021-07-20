@@ -9,9 +9,9 @@ tags:
   - machine learning
 authors:
   - name: Konrad Thorner
-    index: 1
+    affiliation: 1
   - name: Praneet Chaturvedi
-    index: 1 
+    affiliation: 1 
 affiliations:
  - name: Cincinnati Children’s Hospital Medical Center
    index: 1
