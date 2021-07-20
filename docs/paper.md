@@ -35,27 +35,32 @@ ELeFHAnt has been tested on multiple public datasets involving multiple time poi
 
 ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It will then generate the training and test sets from the reference and query respectively, with optional subsampling. SVM and Random Forest are the classifiers that can be used seperately or in an ensemble. Classification accuracy of both are used to assign weights to the predictions from each classifier. These weighted confusion matrices are normalized based on the largest number of cells shared among celltypes and assigned clusters. They are then added together for the final ensemble predictions.
 
-Figure 1
+#### Figure 1
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/ELeFHAnt.png)
 
 The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset.
 
-Table 1]
+#### Table 1
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/gut_datasets.png)
 
 ### Celltype Annotation
 
 To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmentaite:2020] as reference and Fetal intestinal data [@Yu:2021] as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively for enabling fast computation.
 
-Figure 2
+#### Figure 2
 
-A
+#### A
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/GutCell_Reference.png){ width=500px }
 
-B
+#### B
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=500px }
 
-C
+#### C
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/CelltypeAnnotation_Example2.png){ width=500px }
 
 (A) represents celltypes in the reference dataset displayed on a UMAP. (B) represents Seurat clusters displayed on the query, and (C) represents the predicted celltypes as determined by ELeFHAnt's ensemble approach.
@@ -64,7 +69,8 @@ C
 
 To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas [@Elmentaite:2020]) 2) Fetal intestinal data [@Yu:2021] from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer [@Fawkner-Corbett:2021].  Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize the atlas of ~125k cells.
 
-Figure 3
+#### Figure 3
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/HarmonizationExample_ELeFHAnt.png)
 
 The UMAP on the left represents the 144 total celltypes from the three datasets after integration. The UMAP on the right is the result of ELeFHAnt's harmonization with the ensemble method, showing the resulting labels for each cluster. 
@@ -73,7 +79,8 @@ The UMAP on the left represents the 144 total celltypes from the three datasets 
 
 To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas [@Elmentaite:2020] 2) Fetal intestinal data [@Fawkner-Corbett:2021] from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
 
-Figure 4
+#### Figure 4
+
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/DeduceRelationship_Example.png)
 
 The heatmap depicts the relationship between celltypes for the two references, with each red square showing which cell type in reference 2 best matches a particular celltype in reference 1. 
