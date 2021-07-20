@@ -300,4 +300,4 @@ Please cite our GitHub page if using for research purposes (https://github.com/p
 Please report bugs, issues and improvements using the issues section of the GitHub page.
 
 # Contribute to Code
-Please open pull request to contribute to existing code interms of improvements / new features / bugs.
+Please open pull request to contribute to existing code interms of improvements / new features / scrapping bugs.
