@@ -43,7 +43,7 @@ The attributes of our three example datasets of early gut development are shown 
 
 #### Table 1
 
-![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/gut_datasets.png){ width=1000px }
+![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/gut_datasets.png){ width=500px }
 
 ### Celltype Annotation
 
@@ -53,15 +53,15 @@ To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmen
 
 #### A
 
-![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/GutCell_Reference.png){ width=400px }
+![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/GutCell_Reference.png){ width=450px }
 
 #### B
 
-![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=400px }
+![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=450px }
 
 #### C
 4
-![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/CelltypeAnnotation_Example2.png){ width=400px }
+![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/Examples/CelltypeAnnotation_Example2.png){ width=450px }
 
 (A) represents celltypes in the reference dataset displayed on a UMAP. (B) represents Seurat clusters displayed on the query, and (C) represents the predicted celltypes as determined by ELeFHAnt's ensemble approach.
 
