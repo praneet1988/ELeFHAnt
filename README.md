@@ -283,12 +283,12 @@ The following datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.
 ### Celltype Predictions using 100, 300 and 500 cells per Celltypes resepctively
 ![Graph](Examples/annotation_reproduce.png)
 
-For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. Following datasets were used: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
+For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. The following datasets were used: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
 
 ### Celltype harmonization using 100, 300 and 500 cells per Celltypes respectively
 ![Graph](Examples/harmonization_reproduce.png)
 
-Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. FTheollowing datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as reference2.
+Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. The following datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as reference2.
 
 ### Inferring relationships across Celltypes using 100, 300 and 500 Celltypes between datasets
 ![Graph](Examples/deduce_reproduce.png)
