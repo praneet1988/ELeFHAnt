@@ -5,6 +5,19 @@
 #' seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to learn celltypes from reference dataset and then predict celltypes for query dataset.
 #' 
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
+#' @import kernlab
+#' @import dbscan
+#' @import randomForest
+#' @import caTools
+#' @import e1071
+#' @import ggplot2
+#' @import class
+#' @import splitstackshape
+#' @import fgsea
+#' @import tibble
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
@@ -234,6 +247,19 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALS
 #' (seurat object with Celltypes and seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to harmonize celltypes. Please See: DefaultAssay of each object should be set to "RNA"
 #' 
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
+#' @import kernlab
+#' @import dbscan
+#' @import randomForest
+#' @import caTools
+#' @import e1071
+#' @import ggplot2
+#' @import class
+#' @import splitstackshape
+#' @import fgsea
+#' @import tibble
 #' @param seurat.objects a list of processed seurat objects (please set Default Assay to "RNA") with Celltypes column in their respective meta.data to perform integration on
 #' @param perform_integration logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 #' @param integrated.atlas an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE
@@ -483,6 +509,19 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 #' It requires two datasets (both processed Seurat Objects with Celltypes column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to obtain relationships among celltypes. Function outputs a heatmap with celltypes from dataset1 as rows and celltypes from dataset2 as columns.
 #' 
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
+#' @import kernlab
+#' @import dbscan
+#' @import randomForest
+#' @import caTools
+#' @import e1071
+#' @import ggplot2
+#' @import class
+#' @import splitstackshape
+#' @import fgsea
+#' @import tibble
 #' @param reference1 a processed Seurat Object with Celltypes column in metadata
 #' @param reference2 a processed seurat object with Celltypes column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
@@ -680,6 +719,19 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
 #' It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed 
 #' seurat object with seurat_clusters column in metadata).
 #' 
+#' @import Seurat
+#' @import dplyr
+#' @import tidyr
+#' @import kernlab
+#' @import dbscan
+#' @import randomForest
+#' @import caTools
+#' @import e1071
+#' @import ggplot2
+#' @import class
+#' @import splitstackshape
+#' @import fgsea
+#' @import tibble
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @return GSEA result
