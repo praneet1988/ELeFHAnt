@@ -35,10 +35,10 @@ ELeFHAnt has been tested on multiple public datasets involving multiple time poi
 
 ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It will then generate the training and test sets from the reference and query respectively, with optional subsampling. SVM and Random Forest are the classifiers that can be used seperately or in an ensemble. Classification accuracy of both are used to assign weights to the predictions from each classifier. These weighted confusion matrices are normalized based on the largest number of cells shared among celltypes and assigned clusters. They are then added together for the final ensemble predictions.
 
-![**Figure 1** TEST](./main/ELeFHAnt.png "Figure 1")
+![**Figure 1** TEST](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/blob/main/main/ELeFHAnt.png "Figure 1")
 
 The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset.
-![Table 1](./Examples/gut_datasets.png "Table 1")
+![Table 1](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png "Table 1")
 
 ### Celltype Annotation
 
@@ -46,11 +46,11 @@ To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmen
 
 Figure 2
 
-![A](https://raw.githubusercontent/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=250px }
+![A](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/blob/main/Examples/GutCell_Reference.png){ width=250px }
 
-![B](https://raw.githubusercontent/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=250px }
+![B](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/blob/main/Examples/FetalIntestine_SpenceLab_Query.png){ width=250px }
 
-![C](https://raw.githubusercontent/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=250px }
+![C](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/blob/main/Examples/CelltypeAnnotation_Example2.png){ width=250px }
 
 (A) represents celltypes in the reference dataset displayed on a UMAP. (B) represents Seurat clusters displayed on the query, and (C) represents the predicted celltypes as determined by ELeFHAnt's ensemble approach.
 
