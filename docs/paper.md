@@ -38,7 +38,7 @@ ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It w
 ![**Figure 1** TEST](./main/ELeFHAnt.png "Figure 1")
 
 The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset.
-![Table 1](https://raw.githubusercontent/praneet1988/ELeFHAnt/blob/main/Examples/gut_datasets.png){ width=250px }
+![Table 1](./Examples/gut_datasets.png "Table 1")
 
 ### Celltype Annotation
 
