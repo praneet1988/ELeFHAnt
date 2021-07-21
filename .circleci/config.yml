@@ -13,7 +13,7 @@ jobs:
           command: R CMD build .
       - run:
           name: install Tinytex
-          command: tinytex::install_tinytex()
+          command: sudo apt-get install texlive-fonts-recommended
       - run:
           name: Check package
           command: R CMD check *tar.gz
