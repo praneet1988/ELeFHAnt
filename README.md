@@ -244,12 +244,12 @@ We were successful at automating annotation of celltypes in datasets coming from
 
 We see great consensus in celltype annotation.
 
-The remaining examples utilize three example datasets of early gut development as shown below, as well as an integrated dataset of all three. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" [@Fawkner-Corbett:2021]. "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception [@Elmentaite:2020]. Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas [@Yu:2021]. 
+The remaining examples utilize three example datasets of early gut development as shown below, as well as an integrated dataset of all three. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
 
 ![Graph](Examples/gut_datasets.png)
 
 ## Example2
-To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as the reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as the query. Reference and query were downsampled to 200 cells per Celltype and seurat_clusters respectively for enabling fast computation.
+To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as the reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as the query. Reference and query were downsampled to 200 cells per Celltype and seurat_clusters respectively for enabling fast computation.
 
 ### GutCell data as Reference
 ![Graph](Examples/GutCell_Reference.png)
@@ -262,7 +262,7 @@ To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas(
 
 
 # Label Harmonization Example
-To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize atlas consisting of ~125k cells.
+To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize atlas consisting of ~125k cells.
 
 ### Harmonized Atlas ~125k cells
 ![Graph](Examples/HarmonizationExample_ELeFHAnt.png)
@@ -270,7 +270,7 @@ To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas(http
 We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret. Whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment, making interpretation much clearer.
 
 # Deduce Relationship Example
-To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
+To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
 
 ### Relationship among celltypes between two datasets
 ![Graph](Examples/DeduceRelationship_Example.png)
@@ -282,17 +282,17 @@ The output of Deduce Relationship is a representation of the confusion matrix as
 To assess reproducibility, each function was run 5 times with varying numbers of cells used during subsampling, ranging from 100 to 500. This will also determine what number of examples during training leads to the best performance for the SVM and Random Forest classifers.
 
 For Celltype Annotation, the predicted cell labels assigned to the query differ for 100 cells but remain stable when 200 to 500 cells are subsampled.
-The following datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as query.
+The following datasets were used: Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as query.
 
 ### Celltype Predictions using 100, 300 and 500 cells per Celltypes resepctively
 ![Graph](Examples/annotation_reproduce.png)
 
-For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. The following datasets were used: 1) Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
+For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. The following datasets were used: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
 
 ### Celltype harmonization using 100, 300 and 500 cells per Celltypes respectively
 ![Graph](Examples/harmonization_reproduce.png)
 
-Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. The following datasets were used: Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as reference2.
+Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. The following datasets were used: Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as reference2.
 
 ### Inferring relationships across Celltypes using 100, 300 and 500 Celltypes between datasets
 ![Graph](Examples/deduce_reproduce.png)
