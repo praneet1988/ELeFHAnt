@@ -39,7 +39,7 @@ ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It w
 
 ![](https://raw.githubusercontent.com/praneet1988/ELeFHAnt/main/ELeFHAnt.png)
 
-The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset.
+The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" [@Fawkner-Corbett:2021]. "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception [@Elmentaite:2020]. Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas [@Yu:2021]. 
 
 #### Table 1
 
@@ -47,7 +47,7 @@ The attributes of our three example datasets of early gut development are shown 
 
 ### Celltype Annotation
 
-To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmentaite:2020] as reference and Fetal intestinal data [@Yu:2021] as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively for enabling fast computation.
+To demonstrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas [@Elmentaite:2020] as reference and Fetal intestinal data [@Yu:2021] as query. Reference and query were downsampled to 200 cells per Celltypes and seurat_clusters respectively to enable fast computation.
 
 #### Figure 2
 
