@@ -238,11 +238,15 @@ To demonstrate  Celltype Annotation: reference was set to ForegutEnoderm mouse f
 ### Predicted celltypes for query using Ensemble learning
 ![Graph](Examples/CelltypeAnnotation_Example.png)
 
-We were successful at automating annotating celltypes in dataset coming from a later stage. Below is the celltype annotation from publication https://elifesciences.org/articles/55526
+We were successful at automating annotation of celltypes in datasets coming from a later stage. Below is the celltype annotation from the publication https://elifesciences.org/articles/55526
 
 ![Graph](Examples/OriginalLabels.png)
 
 We see great consensus in celltype annotation.
+
+The remaining examples utilize three example datasets of early gut development as shown below, as well as an integrated dataset of all three. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" [@Fawkner-Corbett:2021]. "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception [@Elmentaite:2020]. Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas [@Yu:2021]. 
+
+![Graph](Examples/gut_datasets.png)
 
 ## Example2
 To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas(https://cellgeni.cog.sanger.ac.uk/gutcellatlas/fetal_RAWCOUNTS_cellxgene.h5ad) as the reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as the query. Reference and query were downsampled to 200 cells per Celltype and seurat_clusters respectively for enabling fast computation.
