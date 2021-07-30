@@ -37,6 +37,8 @@ ELeFHAnt has been tested on public datasets involving multiple time points in fe
 
 # Results
 
+### Overview of ELeFHAnt Model
+
 ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It will then generate the training and test sets from the reference and query respectively, with optional subsampling. SVM and Random Forest are the two classifiers that can be used seperately or as an ensemble. Classification accuracy of both are used to assign weights to the predictions from each classifier. These weighted confusion matrices are normalized based on the largest number of cells shared among celltypes and assigned clusters. They are then added together for the final ensemble predictions.
 
 #### Figure 1
@@ -94,7 +96,7 @@ The heatmap depicts the relationship between celltypes for the two references, w
 
 # Acknowledgements
 
-We would like to thank Drs. Emily Miraldi, Nathan Salomonis and Anil Jegga at Cincinnati Children's Hospital Medical Center for their valuable feedback. 
+We would like to thank Drs. Anil Jegga, Emily Miraldi, and Nathan Salomonis at Cincinnati Children's Hospital Medical Center for their valuable feedback. 
 
 # Author Contributions
 
