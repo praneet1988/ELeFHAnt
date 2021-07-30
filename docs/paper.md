@@ -35,7 +35,7 @@ ELeFHAnt is a supervised machine learning-based tool that enables researchers to
 
 ELeFHAnt has been tested on public datasets involving multiple time points in fetal development, where it was still able to identify cell types. It has also been used internally within Cincinnati Children’s Hospital Medical Center across different projects, including annotation of snRNA (single nucleus RNA) sequencing with a harmonized gut cell atlas. 
 
-# Overview and Examples
+# Results
 
 ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It will then generate the training and test sets from the reference and query respectively, with optional subsampling. SVM and Random Forest are the two classifiers that can be used seperately or as an ensemble. Classification accuracy of both are used to assign weights to the predictions from each classifier. These weighted confusion matrices are normalized based on the largest number of cells shared among celltypes and assigned clusters. They are then added together for the final ensemble predictions.
 
@@ -49,7 +49,7 @@ ELeFHAnt makes use of Seurat for the initial input data and pre-processing. It w
 
 The attributes of our three example datasets of early gut development are shown below, as well as those of the integrated dataset. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" [@Fawkner-Corbett:2021]. "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception [@Elmentaite:2020]. Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas [@Yu:2021].
 
-### Celltype Annotation
+### Cell Type Annotation uses references to label unannotated cells
 
 Cell type annotation in ELeFHAnt is performed by two sub functions: 1) ApproximationBasedCelltypeAssignment 2) ClassifyCells. ELeFHAnt runs diagnostics on the inputted reference and query Seurat objects to calculate the ratio between number of cells in the query versus reference. If the ratio is greater than 1.5, then ELeFHAnt automatically deploys ApproximationBasedCelltypeAssignment to approximate the best suitable cell type for each cluster of cells in the query. If the ratio is < 1.5, or in other words the number of cells in the reference are larger than query cells, a per cell based annotation is carried out (please see methods for detail). To demonstrate approximation based assignment, we used Gut as reference (~21k cells) and Spence as query (~77k cells) (please see Table 1). ELeFHAnt automatically calculated the ratio and performed the approximation based assignment. Using approximation based assignment ELeFHAnt labeled all clusters with the best approximated cell type (Figure 2).
 Similarly, to exhibit the per cell annotation, we downsampled 300 cells per cell type from Gut to use as reference and 200 cells per seurat clusters from Spence to use as query (please see Table 1). As the ratio < 1.5, ELeFHAnt started per-cell annotation to annotate each cell in the query (Figure 3). Comparing the predicted annotations to known cell types in the query, we see 1:1 consensus across broad cell types including endothelial, epithelial, mesenchymal, and neuronal.
@@ -71,7 +71,7 @@ Similarly, to exhibit the per cell annotation, we downsampled 300 cells per cell
 
 (A) represents celltypes in the reference dataset displayed on a UMAP. (B) represents Seurat clusters displayed on the query, and (C) represents the predicted celltypes as determined by ELeFHAnt's ensemble approach.
 
-### Label Harmonization
+### Label Harmonization finds a unified set of labels across multiple datasets
 
 Integrating single cell RNA datasets with different sets of cell type assignments can become very difficult to infer the cell type label that an integrated cluster should be associated with. To solve this problem, we designed a function (LabelHarmonization) to harmonize cell types from multiple datasets into an unified atlas with cell types assigned to each cluster of cells in the integrated dataset. To demonstrate ELeFHAnt’s LabelHarmonization we used three datasets with cells profiled from fetal gut development (Table 1). Briefly, we integrate three atlases using Seurat’s canonical correlation analysis based integration algorithm and then create training and testing sets to learn and harmonize cell types (please see methods for details). In Figure 4, the left panel shows integrated cells labeled with 145 cell types that each reference contributed; whereas on the right panel integrated cells labeled with harmonized cell types using ensemble learning in ELeFHAnt are shown. We can clearly assess the cell type assigned to each cell community instead of needing to manually annotate cell types. For example, on the left panel the all neuronal cell types can be seen which were present in each dataset whereas on the right ELeFHAnt harmonized and even found subtypes to annotate the integrated clusters.
 
@@ -82,7 +82,7 @@ Integrating single cell RNA datasets with different sets of cell type assignment
 
 The UMAP on the left represents the 144 total celltypes from the three datasets after integration. The UMAP on the right is the result of ELeFHAnt's harmonization with the ensemble method, showing the resulting labels for each cluster. 
 
-### Deduce Relationship
+### Deduce Relationship reveals similarity in cell types across datasets
 
 With the growing number of single cell RNA-Seq (scRNA-Seq) datasets, hypothesis generation can be piloted by utilizing multiple scRNA datasets. Comparing datasets to infer similarity or comparing in-house datasets to publicly available datasets is important for facilitating experimental design and finding similarity across cell types. The DeduceRelationship function in ELeFHAnt compares the cell types between two datasets to calculate relative similarity. In addition to hypothesis generation this function can be helpful in comparing an in-house sequencing dataset to multiple public datasets for assessing robustness of sequencing, annotation, or clustering. To demonstrate, we compared Gut vs Spence and found the Mesoderm2 cell type in Gut is similar to the Mesenchyme subtypes in Spence. Similarly, all immune sub-cell types were similar to the Immune cell type in Gut (Figure 5).
 
