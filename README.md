@@ -7,6 +7,7 @@ Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) pr
 1) Bugs are brushed out
 2) Improved CelltypeAnnotation function. ELeFHAnt can now automatically detect if approximation or per cell based annotation is to be performed dependeing on number of cells in reference and query
 3) ntree argument for randomForest (number of decision trees) can be now bee adjusted by the user (Default: 500)
+4) Check out Benchmarking section to see how ELeFHAnt compares to other softwares / R packages like scPred and label transfer.
 
 ## Where to find previous versions
 Users can access ELeFHAnt previous releases from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases]
@@ -295,6 +296,18 @@ Lastly, for Deduce Relationship, the heatmaps display little variability even be
 
 ### Inferring relationships across Celltypes using 100, 300 and 500 Celltypes between datasets
 ![Graph](Examples/deduce_reproduce.png)
+  
+# Benchmarking
+To assess the performance of ELeFHAnt, we compared it to some readily used R packages like scPred and Seurat's label transfer. We could only comapre CelltypeAnnotation function as this is the only common function acrosss three packages.
+We performed benchmarking in two ways 1) Intra dataset 2) Inter dataset. For Intra dataset we used downsampled Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868). 70% cells were used for training and 30% for testing. For Inter dataset we used Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) as query. 300 cells per Cell type were used from Gut Cell atlas and 200 cells per seurat_cluster were used from Fetal intestinal data.
+
+### Intra dataset Benchmarking
+![Graph](Examples/Benchmark_scData_reference_query.IntraDataset.png)
+![Graph](Examples/Benchmark_CelltypeAnnotation_ELeFHAnt_scPred_LT.IntraDataset.png)
+  
+### Inter dataset Benchmarking
+![Graph](Examples/Benchmark_scData_reference_query.InterDataset.png)
+![Graph](Examples/Benchmark_CelltypeAnnotation_ELeFHAnt_scPred_LT.InterDataset.png)
 
 # Citation
 Please cite our GitHub page if using for research purposes (https://github.com/praneet1988/ELeFHAnt).
