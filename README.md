@@ -8,7 +8,7 @@ Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) pr
 2) Improved CelltypeAnnotation function. ELeFHAnt can now automatically detect if approximation based assignemnt or per cell annotation is to be performed based on number of cells in reference and query
 3) ntree argument for randomForest (number of decision trees) can be now bee adjusted by the user (Default: 500)
 
-## Where to find Version 1 and version 1.1
+## Where to find previous versions
 Users can access ELeFHAnt previous releases from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases]
 
 ## Installation
