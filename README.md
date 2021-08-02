@@ -3,16 +3,13 @@
 # ELeFHAnt
 Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with the flexibility of choosing a single machine learning based classifier or letting ELeFHAnt automatically use the power of  randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship.
 
-## Version 1.1 is now available
-1) Bugs are now brushed out
-2) A new function to infer relationships among celltypes between scRNA datasets is added [DeduceRelationship]
-3) ValidatePrections is now updated and runs a gene set enrichment analysis to check the enrichment of markers from assigned celltypes with respect to markers of seurat_clusters
-4) randomForest now builds 1000 trees to train and classify
-5) Increased cache memory in SVM
-6) cost parameter of SVM is now set to 10 
+## Version 1.1.1 is now available
+1) Bugs are brushed out
+2) Improved CelltypeAnnotation function. ELeFHAnt can now automatically detect if approximation based assignemnt or per cell annotation is to be performed based on number of cells in reference and query
+3) ntree argument for randomForest (number of decision trees) can be now bee adjusted by the user (Default: 500)
 
-## Where to find Version 1
-Users can still access ELeFHAnt v1 from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases/tag/version1]
+## Where to find Version 1 and version 1.1
+Users can access ELeFHAnt previous releases from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases]
 
 ## Installation
 ```
