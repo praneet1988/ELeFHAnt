@@ -1,6 +1,6 @@
 Package: ELeFHAnt
 Title: Ensemble Learning for Harmonization and Annotation of Single Cells
-Version: 1.1
+Version: 1.1.1
 Authors@R: 
     person(given = "Praneet",
            family = "Chaturvedi",
@@ -50,6 +50,4 @@ Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr
-
-
 
