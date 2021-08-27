@@ -3,11 +3,8 @@
 # ELeFHAnt
 Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with the flexibility of choosing a single machine learning based classifier or letting ELeFHAnt automatically use the power of  randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship.
 
-## Version 1.1.1 is now available
-1) Bugs are brushed out
-2) Improved CelltypeAnnotation function. ELeFHAnt can now automatically detect if approximation or per cell based annotation is to be performed dependeing on number of cells in reference and query
-3) ntree argument for randomForest (number of decision trees) can be now bee adjusted by the user (Default: 500)
-4) Check out Benchmarking section to see how ELeFHAnt compares to other softwares / R packages like scPred and label transfer.
+## Version 1.1.2 is now available
+Improved CelltypeAnnotation function. Users can now choose the classification approach that ELeFHAnt should apply. 1) ClassifyCells 2) ClassifyCells_usingApproximation. We recommend using ClassifyCells_usingApproximation when reference has significantly less number of cells compared to query
 
 ## Where to find previous versions
 Users can access ELeFHAnt previous releases from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases]
@@ -80,7 +77,7 @@ Ensemble learning based classsification uses both randomForest and SVM predictio
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
-out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000)
+out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
 ## What does each parameter do?
 ```
 reference: a processed Seurat object with Celltypes column in the metadata
@@ -98,6 +95,10 @@ crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validati
 validatePredictions: logical indicator (TRUE or FALSE) to assess predictions by computing number of markers shared between assigned celltype and annotated cluster
 
 selectvarfeatures: number of variable features to select for training (default: 2000)
+
+ntree: number of trees randomForest classifier should build (Default: 500)
+
+classification.approach: apprach to classify cells 1) ClassifyCells 2) ClassifyCells_usingApproximation. Default: ClassifyCells. We recommend using ClassifyCells_usingApproximation when reference has significantly less number of cells compared to query
 ```
 ## Output
 ```
@@ -131,7 +132,7 @@ Ensemble learning based classsification uses both randomForest and SVM predictio
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
-out = LabelHarmonization(seurat.objects = c(seuratbject1, seuratbject2, seuratbject3, ..), perform_integration = TRUE, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, integrated.atlas = NULL, npcs = 30, resolution = 0.5, selectanchorfeatures = 2000)
+out = LabelHarmonization(seurat.objects = c(seuratbject1, seuratbject2, seuratbject3, ..), perform_integration = TRUE, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, integrated.atlas = NULL, npcs = 30, resolution = 0.5, selectanchorfeatures = 2000, ntree = 500)
 
 ## What does each parameter do?
 ```
@@ -156,6 +157,8 @@ crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validati
 validatePredictions: logical indicator (TRUE or FALSE) to assess predictions by computing number of markers shared between assigned celltype and annotated cluster
 
 selectanchorfeatures: number of anchor features to use for integrating datasets (Default: 2000)
+
+ntree: number of trees randomForest classifier should build (Default: 500)
 ```
 ## Output
 ```
@@ -207,6 +210,8 @@ classification.method: choose classification method for learning and predicting 
 crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model
 
 selectvarfeatures: number of variable features to select while training (default: 2000)
+
+ntree: number of trees randomForest classifier should build (Default: 500)
 ```
 ## Output
 ```
