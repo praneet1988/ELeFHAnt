@@ -40,7 +40,7 @@ Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensembl
 query seurat object with predictions added to meta.data of the object
 }
 \description{
-Approximation based Celltype Annotation is a function to annotate celltypes in a single cell datasets using approximation. Approximation sets highest voted cell type for a query cluster.
+Approximation based Celltype Annotation is a function to annotate cells in a single cell datasets using approximation. Approximation sets highest voted cell type for a query cluster.
 It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed
 seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 to learn celltypes from reference dataset and then predict celltypes for query dataset.

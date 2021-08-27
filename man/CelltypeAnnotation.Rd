@@ -13,7 +13,8 @@ CelltypeAnnotation(
   crossvalidationSVM = 10,
   validatePredictions = TRUE,
   selectvarfeatures = 2000,
-  ntree = 500
+  ntree = 500,
+  classification.approach = "ClassifyCells"
 )
 }
 \arguments{
@@ -35,12 +36,15 @@ Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensembl
 \item{selectvarfeatures}{number of variable features to select while training (default: 2000)}
 
 \item{ntree}{number of trees randomForest classifier should build (Default: 500)}
+
+\item{classification.approach}{apprach to classify cells 1) ClassifyCells 2) ClassifyCells_usingApproximation. Default: ClassifyCells. We recommend using ClassifyCells_usingApproximation
+when reference has significantly less number of cells compared to query}
 }
 \value{
 query seurat object with predictions added to meta.data of the object
 }
 \description{
-Celltype annotation is a function to annotate celltypes in a single cell datasets. It runs diagnostics to automatically choose 1) Approximation based Cell type annotation 2) Cell type Annotation per cell in query
+Celltype annotation is a function to annotate celltypes in a single cell datasets.
 It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed
 seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 to learn celltypes from reference dataset and then predict celltypes for query dataset.
