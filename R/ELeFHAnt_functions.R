@@ -1,6 +1,6 @@
 #' ELeFHAnt Celltype Annotation
 #'
-#' Celltype annotation is a function to annotate celltypes in a single cell datasets. It runs diagnostics to automatically choose 1) Approximation based Cell type annotation 2) Cell type Annotation per cell in query
+#' Celltype annotation is a function to annotate celltypes in a single cell datasets.
 #' It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed 
 #' seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to learn celltypes from reference dataset and then predict celltypes for query dataset.
@@ -28,12 +28,14 @@
 #' @param validatePredictions logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis
 #' @param selectvarfeatures number of variable features to select while training (default: 2000)
 #' @param ntree number of trees randomForest classifier should build (Default: 500)
+#' @param classification.approach apprach to classify cells 1) ClassifyCells 2) ClassifyCells_usingApproximation. Default: ClassifyCells. We recommend using ClassifyCells_usingApproximation 
+#' when reference has significantly less number of cells compared to query
 #' @return query seurat object with predictions added to meta.data of the object
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
 
-CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALSE, downsample_to = 200, classification.method = c("randomForest", "SVM", "Ensemble"), crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500) {
+CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALSE, downsample_to = 200, classification.method = c("randomForest", "SVM", "Ensemble"), crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells") {
     if(downsample == TRUE)
     {
         message ("Setting Assay of reference and query to RNA")
@@ -64,19 +66,14 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALS
         Ratio = query_cells / reference_cells_afterdownsampling
         message (paste0("Ratio of number of cells in query vs downsampled reference:", Ratio))
 
-        if(Ratio > 1.5)
+        if(classification.approach == "ClassifyCells")
         {
-            message ("Warning: Number of cells in query are >1.5 fold in downsampled reference")
-            message ("Deploying approximation based cell type annotation for query cell clusters. You can try increasing the reference size using LabelHarmonization (ELeFHAnt) function combining multiple references")
-            Sys.sleep(5)
-            query = ApproximationBasedCelltypeAssignment(reference = reference_use, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
+            query = ClassifyCells(reference = reference_use, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
             return(query)
         }
-        else
+        if(classification.approach == "ClassifyCells_usingApproximation")
         {
-            message ("Number of cells in query are <=1.5 fold in downsampled reference")
-            message ("Deploying cell type annotation for cells in query")
-            query = ClassifyCells(reference = reference_use, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
+            query = ApproximationBasedCelltypeAssignment(reference = reference_use, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
             return(query)
         }
     }
@@ -104,26 +101,18 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALS
         Ratio = query_cells / reference_cells
         message (paste0("Ratio of number of cells in query vs reference:", Ratio))
 
-        if(Ratio > 1.5)
+        if(classification.approach == "ClassifyCells")
         {
-            message ("Warning: Number of cells in query are >1.5 fold in reference")
-            message ("Deploying approximation based cell type annotation for query cell clusters. You can try increasing the reference size using LabelHarmonization (ELeFHAnt) function combining multiple references.")
-            Sys.sleep(5)
-            message ("For appoximation cell type annotation, query will be downsampled to 200 cells per cluster")
-            query = ApproximationBasedCelltypeAssignment(reference = reference, query = query, downsample = TRUE, downsample_to = 200, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
-            return(query)
-        }
-        else
-        {
-            message ("Number of cells in query are <=1.5 fold in reference")
-            message ("Deploying cell type annotation for cells in query")
             query = ClassifyCells(reference = reference, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
             return(query)
         }
+        if(classification.approach == "ClassifyCells_usingApproximation")
+        {
+            query = ApproximationBasedCelltypeAssignment(reference = reference, query = query, downsample = downsample, downsample_to = downsample_to, classification.method = classification.method, crossvalidationSVM = crossvalidationSVM, validatePredictions = validatePredictions, selectvarfeatures = selectvarfeatures, ntree = ntree)
+            return(query)
+        }
     }
-
-    
- }
+}
 
 #' ELeFHAnt Label Harmonization
 #'
@@ -689,7 +678,7 @@ ValidatePredictions <- function(reference = NULL, query = NULL) {
 
 #' ELeFHAnt Approximation based Celltype Annotation
 #'
-#' Approximation based Celltype Annotation is a function to annotate celltypes in a single cell datasets using approximation. Approximation sets highest voted cell type for a query cluster.
+#' Approximation based Celltype Annotation is a function to annotate cells in a single cell datasets using approximation. Approximation sets highest voted cell type for a query cluster.
 #' It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed 
 #' seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to learn celltypes from reference dataset and then predict celltypes for query dataset.
@@ -908,7 +897,7 @@ ApproximationBasedCelltypeAssignment <- function(reference = reference, query = 
 
 #' ELeFHAnt Cell type Annotation per cell in query
 #'
-#' Classify Cells is a function to annotate celltypes in a single cell datasets.
+#' Classify Cells is a function to annotate cells in a single cell datasets.
 #' It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed 
 #' seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction method
 #' to learn celltypes from reference dataset and then predict celltypes for query dataset.
