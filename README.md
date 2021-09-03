@@ -219,20 +219,6 @@ ntree: number of trees randomForest classifier should build (Default: 500)
 2) Confusion matrices from each classification.method and heatmap are automatically saved in current working directory
 ```
 
-# Tutorials
-
-Please download the .html file if you do not have a dropbox account. You can open the downloaded file in the browser of your choice to go through the tutorial.
-
-#### Celltype Annotation Tutorial
-https://www.dropbox.com/s/3cr5bxzwtifoqg3/CelltypeAnnotation_Tutorial.html?dl=0
-
-#### Label Harmonization Tutorial
-https://www.dropbox.com/s/q8lfej7ucoi148w/LabelHarmonization_Tutorial.html?dl=0
-
-#### Deduce Relationship Tutorial
-https://www.dropbox.com/s/vrqc7bxxwsyd83g/DeduceRelationship_Tutorial.html?dl=0
-
-
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship here: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
@@ -273,19 +259,19 @@ The following datasets were used: E-MTAB-8901 (~21k cells) as reference and E-MT
 ### Celltype Predictions using 100, 300 and 500 cells per Celltypes resepctively
 ![Graph](Examples/annotation_reproduce.png)
 
-For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. The following datasets were used: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X)
+For Label Harmonization, we find that cell labels remain approximately 80% consistent across the different iterations. Relative to annotation, the complexity from the number of datasets and cell labels suggests that harmonization does benefit from a greater number of cells used. The following datasets were used: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells)
 
 ### Celltype harmonization using 100, 300 and 500 cells per Celltypes respectively
 ![Graph](Examples/harmonization_reproduce.png)
 
-Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100 and 500. The following datasets were used: Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference1 and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as reference2.
+Lastly, for Deduce Relationship, the heatmaps display little variability even between subsamples of 100, 300 and 500. The following datasets were used: E-MTAB-8901 (~21k cells) as reference1 and E-MTAB-10187 (~77k cells) as reference2.
 
 ### Inferring relationships across Celltypes using 100, 300 and 500 Celltypes between datasets
 ![Graph](Examples/deduce_reproduce.png)
   
 # Benchmarking
 To assess the performance of ELeFHAnt, we compared it to some readily used R packages like scPred and Seurat's label transfer. We could only comapre CelltypeAnnotation function as this is the only common function acrosss three packages.
-We performed benchmarking in two ways 1) Intra dataset 2) Inter dataset. For Intra dataset we used downsampled Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868). 70% cells were used for training and 30% for testing. For Inter dataset we used Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) as query. 300 cells per Cell type were used from Gut Cell atlas and 200 cells per seurat_cluster were used from Fetal intestinal data.
+We performed benchmarking in two ways 1) Intra dataset 2) Inter dataset. For Intra dataset we used downsampled E-MTAB-8901 (~21k cells). 70% cells were used for training and 30% for testing. For Inter dataset we used E-MTAB-8901 (~21k cells) as reference and E-MTAB-10187 (~77k cells) as query. 300 cells per Cell type were used from E-MTAB-8901 and 200 cells per seurat_cluster were used from E-MTAB-10187. Classification.apprach was set to "ClassifyCells".
 
 ### Intra dataset Benchmarking
 ![Graph](Examples/Benchmark_scData_reference_query.IntraDataset.png)
