@@ -261,7 +261,7 @@ To demonstrate Deduce Relationship we used two datasets that were also uses in t
 ### Relative Similarity among celltypes between two datasets
 ![Graph](Examples/DeduceRelationship_Example.png)
 
-The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We see that the related celltypes all make biological sense, such as all immune cells being assigned to "Immune cells", and the mesenchyme subtypes being assigned to "Mesoderm 2".
+The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We see that the related celltypes all make biological sense, such as all immune cells and their subtypes in reference2 being assigned to "Immune cells" reference1, and similarly mesenchyme subtypes being assigned to "Mesoderm 2".
 
 
 # Reproducibility
