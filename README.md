@@ -236,7 +236,7 @@ https://www.dropbox.com/s/vrqc7bxxwsyd83g/DeduceRelationship_Tutorial.html?dl=0
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship here: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
-
+# Datasets used to showcase ELeFHAnt functionalities
 To demonstrate all the functions of ELeFHAnt we utilize three datasets of early gut development as shown below, as well as an integrated dataset of all three. "GSE158702" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "E-MTAB-8901" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "E-MTAB-10187" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
 
 ![Graph](Examples/gut_datasets.png)
@@ -250,10 +250,10 @@ To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells
 
 
 # Label Harmonization Example
-To demonstrate LabelHarmonization we used three datasets: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab 3) Fetal intestine data from STAR-FINDer (https://www.sciencedirect.com/science/article/pii/S009286742031686X). Data shown below is based on subsetting 200 cells per celltype in each dataset to harmonize atlas consisting of ~125k cells.
-
-### Harmonized Atlas ~125k cells
-![Graph](Examples/HarmonizationExample_ELeFHAnt.png)
+To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells). We integrated three datasets using Seurat's CCA based integration and then ran Label Harmonization (downsample = TRUE, downsample_to = 500) on the integrated object (~112k cells). Left panel shows all ~120 cell types whereas right panel shows 33 granular celltypes assigned after harmonization.
+  
+### Harmonized Atlas ~112k cells
+![Graph](Examples/LabelHarmonization.png)
 
 We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret. Whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment, making interpretation much clearer.
 
