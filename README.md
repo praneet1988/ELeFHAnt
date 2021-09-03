@@ -265,10 +265,10 @@ The output of Deduce Relationship is a representation of the confusion matrix as
 
 
 # Reproducibility
-To assess reproducibility, each function was run 5 times with varying numbers of cells used during subsampling, ranging from 100 to 500. This will also determine what number of examples during training leads to the best performance for the SVM and Random Forest classifers.
+To assess reproducibility, each function was run 3 times with varying numbers of cells used during subsampling, ranging from 100, 300 and 500. This helps determine what number of examples during training leads to the best performance for the SVM and Random Forest classifers.
 
-For Celltype Annotation, the predicted cell labels assigned to the query differ for 100 cells but remain stable when 200 to 500 cells are subsampled.
-The following datasets were used: Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as query.
+For Celltype Annotation, the predicted cell labels assigned to the query differ for 100 cells but remain stable when 300 to 500 cells are subsampled.
+The following datasets were used: E-MTAB-8901 (~21k cells) as reference and E-MTAB-10187 (~77k cells) as query. Classification.approach is set to "ClassifyCells_usingApproximation".
 
 ### Celltype Predictions using 100, 300 and 500 cells per Celltypes resepctively
 ![Graph](Examples/annotation_reproduce.png)
