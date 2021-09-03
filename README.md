@@ -77,14 +77,14 @@ Ensemble learning based classsification uses both randomForest and SVM predictio
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
-out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
+out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = FALSE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
 ## What does each parameter do?
 ```
 reference: a processed Seurat object with Celltypes column in the metadata
 
 query: a processed Seurat object with seurat_clusters column in the metadata
 
-downsample: logical Indicator (TRUE or FALSE) to downsample reference and query, enabling fast computation
+downsample: logical Indicator (TRUE or FALSE) to downsample reference and query, enabling fast computation. We recommend using this parameter only when classification.approach is set ClassifyCells_usingApproximation.
 
 downsample_to: a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters respectively
 
@@ -103,7 +103,7 @@ classification.approach: apprach to classify cells 1) ClassifyCells 2) ClassifyC
 ## Output
 ```
 1) query Seurat object with predicted celltypes added to metadata of the object
-2) Confusion matrices from each classification.method and gene set enrichment results are automatically saved in the current working directory
+2) Confusion matrices from each classification.method (when classification.apprach is set to ClassifyCells_usingApproximation) and gene set enrichment results are automatically saved in the current working directory
 ```
 
 # Label Harmonization in detail
@@ -132,7 +132,7 @@ Ensemble learning based classsification uses both randomForest and SVM predictio
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
-out = LabelHarmonization(seurat.objects = c(seuratbject1, seuratbject2, seuratbject3, ..), perform_integration = TRUE, downsample = TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, integrated.atlas = NULL, npcs = 30, resolution = 0.5, selectanchorfeatures = 2000, ntree = 500)
+out = LabelHarmonization(seurat.objects = c(seuratbject1, seuratbject2, seuratbject3, ..), perform_integration = TRUE, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, integrated.atlas = NULL, npcs = 30, resolution = 0.5, selectanchorfeatures = 2000, ntree = 500)
 
 ## What does each parameter do?
 ```
@@ -163,7 +163,7 @@ ntree: number of trees randomForest classifier should build (Default: 500)
 ## Output
 ```
 1) Integrated Seurat object with harmonized celltypes added to metadata of the object
-2) Confusion matrices from each classification.method and gene set enrichment results are automatically saved in the current working directory
+2) Confusion matrices from each classification.method and gene set enrichment results (if validatePredictions = TRUE) are automatically saved in the current working directory
 ```
 
 # Deduce Relationship
@@ -236,33 +236,16 @@ https://www.dropbox.com/s/vrqc7bxxwsyd83g/DeduceRelationship_Tutorial.html?dl=0
 # ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship here: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
-# Celltype Annotation Example
-## Example1
-To demonstrate  Celltype Annotation: reference was set to ForegutEnoderm mouse from E8.5 to E9.5 (https://www.nature.com/articles/s41467-020-17968-x) and query was set to foregut endoderm cells from E10.5 (https://elifesciences.org/articles/55526). No downsampling was performed.
 
-### Predicted celltypes for query using Ensemble learning
-![Graph](Examples/CelltypeAnnotation_Example.png)
-
-We were successful at automating annotation of celltypes in datasets coming from a later stage. Below is the celltype annotation from the publication https://elifesciences.org/articles/55526
-
-![Graph](Examples/OriginalLabels.png)
-
-We see great consensus in celltype annotation.
-
-The remaining examples utilize three example datasets of early gut development as shown below, as well as an integrated dataset of all three. "Fetal" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "Gut" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "Spence" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
+To demonstrate all the functions of ELeFHAnt we utilize three datasets of early gut development as shown below, as well as an integrated dataset of all three. "GSE158702" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "E-MTAB-8901" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "E-MTAB-10187" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
 
 ![Graph](Examples/gut_datasets.png)
+  
+# Celltype Annotation Example
 
-## Example2
-To further demostrate Celltype Annotation using ELeFHAnt we used Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) as the reference and Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab as the query. Reference and query were downsampled to 200 cells per Celltype and seurat_clusters respectively for enabling fast computation.
+To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and doownsample = 300 [Approximation]
 
-### GutCell data as Reference
-![Graph](Examples/GutCell_Reference.png)
-
-### Fetal Intestine (Dr. Spence's Lab) as Query
-![Graph](Examples/FetalIntestine_SpenceLab_Query.png)
-
-### Predicted celltypes for query using Ensemble learning
+### ELeFHAnt Celltype Anntation
 ![Graph](Examples/CelltypeAnnotation_Example2.png)
 
 
