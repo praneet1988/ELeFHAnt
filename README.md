@@ -246,7 +246,7 @@ To demonstrate all the functions of ELeFHAnt we utilize three datasets of early 
 To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and doownsample = 300 [Approximation]
 
 ### ELeFHAnt Celltype Anntation
-![Graph](Examples/CelltypeAnnotation_Example2.png)
+![Graph](Examples/CelltypeAnnotation_GutAtlas_Figure3.tiff)
 
 
 # Label Harmonization Example
