@@ -243,7 +243,7 @@ To demonstrate all the functions of ELeFHAnt we utilize three datasets of early 
   
 # Celltype Annotation Example
 
-To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and doownsample = 300 [Approximation]
+To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and downsample = 300 [Approximation]
 
 ### ELeFHAnt Celltype Anntation
 ![Graph](Examples/CelltypeAnnotation_GutAtlas_Figure3.png)
@@ -255,12 +255,10 @@ To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k c
 ### Harmonized Atlas ~112k cells
 ![Graph](Examples/LabelHarmonization.png)
 
-We can clearly see that after integration showing Celltypes from each dataset on UMAP is very difficult to interpret. Whereas using LabelHarmonization from ELeFHAnt each cluster after integration has a clear celltype assignment, making interpretation much clearer.
-
 # Deduce Relationship Example
-To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) Gut Cell Atlas (https://www.sciencedirect.com/science/article/pii/S1534580720308868) 2) Fetal intestinal data (https://www.sciencedirect.com/science/article/pii/S0092867421005316) from Dr. Spence's Lab. Data shown below is based on subsetting to 500 cells per celltype in each dataset.
+To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells). Parameters used: downsample = TRUE, downsample_to=300, classification.method="Ensemble"
 
-### Relationship among celltypes between two datasets
+### Relative Similarity among celltypes between two datasets
 ![Graph](Examples/DeduceRelationship_Example.png)
 
 The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We see that the related celltypes all make biological sense, such as all immune cells being assigned to "Immune cells", and the mesenchyme subtypes being assigned to "Mesoderm 2".
