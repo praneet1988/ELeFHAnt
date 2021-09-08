@@ -20,7 +20,7 @@
 #' @import tibble
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
-#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
+#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation. if classification.approach is set to "ClassifyCells_usingApproximation" query will be downsampled along with reference.
 #' @param downsample_to a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters resspectively
 #' @param classification.method choose classification method for learning and predicting celltypes. 
 #' Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)
@@ -137,7 +137,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = FALS
 #' @param seurat.objects a list of processed seurat objects (please set Default Assay to "RNA") with Celltypes column in their respective meta.data to perform integration on
 #' @param perform_integration logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 #' @param integrated.atlas an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE
-#' @param downsample logical Indicator (TRUE or FALSE) to downsample seurat objects enabling fast computation
+#' @param downsample logical Indicator (TRUE or FALSE) to downsample Seurat objects or integrated seurat object, enabling fast computation
 #' @param downsample_to a numerical value > 1 to downsample cells [Default: 100]
 #' @param npcs number of principal components to compute after integration
 #' @param resolution value of the resolution parameter, decides size of cell communities.
@@ -403,7 +403,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = TRUE,
 #' @import tibble
 #' @param reference1 a processed Seurat Object with Celltypes column in metadata
 #' @param reference2 a processed seurat object with Celltypes column in metadata
-#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
+#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference1 and reference2, enabling fast computation
 #' @param downsample_to a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters resspectively
 #' @param classification.method choose classification method for learning and predicting celltypes. 
 #' Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)
@@ -917,7 +917,7 @@ ApproximationBasedCelltypeAssignment <- function(reference = reference, query = 
 #' @import tibble
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
-#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
+#' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation
 #' @param downsample_to a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters resspectively
 #' @param classification.method choose classification method for learning and predicting celltypes. 
 #' Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)

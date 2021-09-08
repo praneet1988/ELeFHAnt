@@ -26,7 +26,7 @@ LabelHarmonization(
 
 \item{integrated.atlas}{an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE}
 
-\item{downsample}{logical Indicator (TRUE or FALSE) to downsample seurat objects enabling fast computation}
+\item{downsample}{logical Indicator (TRUE or FALSE) to downsample Seurat objects or integrated seurat object, enabling fast computation}
 
 \item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 100}}
 

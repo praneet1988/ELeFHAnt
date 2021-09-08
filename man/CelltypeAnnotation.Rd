@@ -22,7 +22,7 @@ CelltypeAnnotation(
 
 \item{query}{a processed seurat object with seurat_clusters column in metadata}
 
-\item{downsample}{logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation}
+\item{downsample}{logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation. if classification.approach is set to "ClassifyCells_usingApproximation" query will be downsampled along with reference.}
 
 \item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 100} in reference and query for Celltypes and seurat_clusters resspectively}
 
