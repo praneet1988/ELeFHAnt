@@ -84,7 +84,7 @@ reference: a processed Seurat object with Celltypes column in the metadata
 
 query: a processed Seurat object with seurat_clusters column in the metadata
 
-downsample: logical Indicator (TRUE or FALSE) to downsample reference and query, enabling fast computation. We recommend using this parameter only when classification.approach is set ClassifyCells_usingApproximation.
+downsample: logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation. if classification.approach is set to "ClassifyCells_usingApproximation" query will be downsampled along with reference.
 
 downsample_to: a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters respectively
 
@@ -142,7 +142,7 @@ perform_integration: logical Indicator (TRUE or FALSE) to perform integration us
 
 integrated.atlas: an integrated Seurat object with CellTypes and seurat_clusters column in meta.data. Required if: perform_integration = FALSE
 
-downsample: logical Indicator (TRUE or FALSE) to downsample Seurat objects, enabling fast computation
+downsample: logical Indicator (TRUE or FALSE) to downsample Seurat objects or integrated seurat object, enabling fast computation
 
 downsample_to: a numerical value > 1 to downsample cells [Default: 100]
 
@@ -201,7 +201,7 @@ reference1: a processed Seurat object with Celltypes column in the metadata
 
 reference2: a processed Seurat object with Celltypes column in the metadata
 
-downsample: logical Indicator (TRUE or FALSE) to downsample reference and query, enabling fast computation
+downsample: logical Indicator (TRUE or FALSE) to downsample reference1 and reference2, enabling fast computation
 
 downsample_to: a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters respectively
 
@@ -236,7 +236,7 @@ To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells
 
 
 # Label Harmonization Example
-To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells). We integrated three datasets using Seurat's CCA based integration and then ran Label Harmonization (downsample = TRUE, downsample_to = 500) on the integrated object (~112k cells). Left panel shows all ~120 cell types whereas right panel shows 33 granular celltypes assigned after harmonization.
+To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells). We integrated three datasets using Seurat's CCA based integration and then ran Label Harmonization (downsample = TRUE, downsample_to = 500) on the integrated object (~112k cells). Left panel shows all ~120 cell labels whereas right panel shows 33 granular cell labels assigned after harmonization.
   
 ### Harmonized Atlas ~112k cells
 ![Graph](Examples/LabelHarmonization.png)
