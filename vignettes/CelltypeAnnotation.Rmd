@@ -45,7 +45,7 @@ library(ELeFHAnt)
 ### Load Library ELeFHAnt
 ##### library(ELeFHAnt)
 ### Assing parameters in the function
-##### CelltypeAnnotation(reference=pbmc, query=mydata, downsample=TRUE, downsample_to = 100, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
+##### CelltypeAnnotation(reference=pbmc, query=mydata, downsample=FALSE, classification.method = "Ensemble", crossvalidationSVM = 10, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
 ## What each parameter is?
 ##### reference: a processed Seurat Object with Celltypes column in metadata
 ##### query: a processed seurat object with seurat_clusters column in metadata
