@@ -49,7 +49,7 @@ library(ELeFHAnt)
 ## What each parameter is?
 ##### reference1: a processed Seurat Object with Celltypes column in metadata
 ##### reference2: a processed seurat object with Celltypes column in metadata
-##### downsample: logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation
+##### downsample: logical Indicator (TRUE or FALSE) to downsample reference1 and reference2 enabling fast computation
 ##### downsample_to: a numerical value > 1 to downsample cells [Default: 100] in reference and query for Celltypes and seurat_clusters resspectively
 ##### classification.method: choose classification method for learning and predicting celltypes. randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)
 ##### crossvalidationSVM: if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model
