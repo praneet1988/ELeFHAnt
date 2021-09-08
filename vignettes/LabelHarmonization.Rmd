@@ -48,7 +48,7 @@ library(ELeFHAnt)
 ##### seurat.objects: a list of processed seurat objects with Celltypes column in their respective meta.data to perform integration on.
 ##### perform_integration: logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 ##### integrated.atlas: an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if: perform_integration = FALSE
-##### downsample: logical Indicator (TRUE or FALSE) to downsample seurat objects enabling fast computation
+##### downsample: logical Indicator (TRUE or FALSE) to downsample seurat objects or integrated seurat object, enabling fast computation
 ##### downsample_to: a numerical value > 1 to downsample cells [Default: 100]
 ##### npcs: number of principal components to compute after integration
 ##### resolution: value of the resolution parameter, decides size of cell communities.
