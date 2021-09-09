@@ -282,7 +282,7 @@ We performed benchmarking in two ways 1) Intra dataset 2) Inter dataset. For Int
 ![Graph](Examples/Benchmark_CelltypeAnnotation_ELeFHAnt_scPred_LT.InterDataset.png)
 
 # Citation
-Please cite our GitHub page if using for research purposes (https://github.com/praneet1988/ELeFHAnt).
+Please cite our preprint: https://www.biorxiv.org/content/10.1101/2021.09.07.459342v1 when using ELeFHAnt in your research.
 
 # Bugs/Issues
 Please report bugs, issues and improvements using the issues section of the GitHub page.
