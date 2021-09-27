@@ -486,10 +486,13 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
     message ("Generating confusion matrix and heatmap")
     rf_cm <- rf_cm.1
     write.table(rf_cm, "ConfusionMatrix_RandomForest.txt", quote=F, sep="\t")
+    row_order <- hclust(dist(rf_cm))$order
+    col_order <- hclust(dist(t(rf_cm)))$order
+    rf_cm <- rf_cm[match(rownames(rf_cm)[row_order], rownames(rf_cm)),match(colnames(rf_cm)[col_order], colnames(rf_cm))]
     rf_cm_norm <- round(rf_cm/apply(rf_cm,1,max),3)
     rf_df <- as.data.frame(rf_cm_norm)
-    colnames(rf_df) <- c("reference2","reference1","Cells")
-    plot = ggplot(data = rf_df, aes(x=reference2, y=reference1, fill=Cells)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = element_text(angle = 90))
+    colnames(rf_df) <- c("reference2","reference1","Relative Similarity")
+    plot = ggplot(data = rf_df, aes=reference2, y=reference1, fill=Similarity)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = eleme(xnt_text(angle = 90),axis.text=element_text(size=14),axis.title=element_text(size=18),legend.title=element_text(size=14),legend.text=element_text(size=12))    plot
     plot
     ggsave("Reference1_vs_Reference2_RelationshipInference_Heatmap_RandomForest.png", width = 10, height = 10)
     message("randomForest based learning and relationship inference completed")
@@ -516,10 +519,13 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
     message ("Generating confusion matrix and heatmap")
     svm_cm <- svm_cm.1
     write.table(svm_cm, "ConfusionMatrix_SVM.txt", quote=F, sep="\t")
+    row_order <- hclust(dist(svm_cm))$order
+    col_order <- hclust(dist(t(svm_cm)))$order
+    svm_cm <- svm_cm[match(rownames(svm_cm)[row_order], rownames(svm_cm)),match(colnames(svm_cm)[col_order], colnames(svm_cm))]
     svm_cm_norm <- round(svm_cm/apply(svm_cm,1,max),3)
     svm_df <- as.data.frame(svm_cm_norm)
-    colnames(svm_df) <- c("reference2","reference1","Cells")
-    plot = ggplot(data = svm_df, aes(x=reference2, y=reference1, fill=Cells)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = element_text(angle = 90))
+    colnames(svm_df) <- c("reference2","reference1","Relative Similarity")
+    plot = ggplot(data = svm_df, aes=reference2, y=reference1, fill=Similarity)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = eleme(xnt_text(angle = 90),axis.text=element_text(size=14),axis.title=element_text(size=18),legend.title=element_text(size=14),legend.text=element_text(size=12))    plot
     plot
     ggsave("Reference1_vs_Reference2_RelationshipInference_Heatmap_SVM.png", width = 10, height = 10)
     message ("SVM based learning and relationship inference completed")
@@ -547,10 +553,13 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
     message ("Generating confusion matrix and heatmap")
     rf_cm <- rf_cm.1
     write.table(rf_cm, "ConfusionMatrix_RandomForest.txt", quote=F, sep="\t")
+    row_order <- hclust(dist(rf_cm))$order
+    col_order <- hclust(dist(t(rf_cm)))$order
+    rf_cm <- rf_cm[match(rownames(rf_cm)[row_order], rownames(rf_cm)),match(colnames(rf_cm)[col_order], colnames(rf_cm))]
     rf_cm_norm <- round(rf_cm/apply(rf_cm,1,max),3)
     rf_df <- as.data.frame(rf_cm_norm)
-    colnames(rf_df) <- c("reference2","reference1","Cells")
-    plot = ggplot(data = rf_df, aes(x=reference2, y=reference1, fill=Cells)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = element_text(angle = 90))
+    colnames(rf_df) <- c("reference2","reference1","Relative Similarity")
+    plot = ggplot(data = rf_df, aes=reference2, y=reference1, fill=Similarity)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = eleme(xnt_text(angle = 90),axis.text=element_text(size=14),axis.title=element_text(size=18),legend.title=element_text(size=14),legend.text=element_text(size=12))    plot
     plot
     ggsave("Reference1_vs_Reference2_RelationshipInference_Heatmap_RandomForest.png", width = 10, height = 10)
     
@@ -572,10 +581,13 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
     message ("Generating confusion matrix and heatmap")
     svm_cm <- svm_cm.1
     write.table(svm_cm, "ConfusionMatrix_SVM.txt", quote=F, sep="\t")
+    row_order <- hclust(dist(svm_cm))$order
+    col_order <- hclust(dist(t(svm_cm)))$order
+    svm_cm <- svm_cm[match(rownames(svm_cm)[row_order], rownames(svm_cm)),match(colnames(svm_cm)[col_order], colnames(svm_cm))]
     svm_cm_norm <- round(svm_cm/apply(svm_cm,1,max),3)
     svm_df <- as.data.frame(svm_cm_norm)
-    colnames(svm_df) <- c("reference2","reference1","Cells")
-    plot = ggplot(data = svm_df, aes(x=reference2, y=reference1, fill=Cells)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = element_text(angle = 90))
+    colnames(svm_df) <- c("reference2","reference1","Relative Similarity")
+    plot = ggplot(data = svm_df, aes=reference2, y=reference1, fill=Similarity)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = eleme(xnt_text(angle = 90),axis.text=element_text(size=14),axis.title=element_text(size=18),legend.title=element_text(size=14),legend.text=element_text(size=12))    plot
     plot
     ggsave("Reference1_vs_Reference2_RelationshipInference_Heatmap_SVM.png", width = 10, height = 10)
     
@@ -584,10 +596,13 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
     message ("Generating confusion matrix and heatmap")
     consensus_cm = rf_cm/max(rf_cm) + svm_cm/max(svm_cm)
     write.table(consensus_cm, "ConfusionMatrix_EnsembleLearning.txt", quote=F, sep="\t")
+    row_order <- hclust(dist(consensus_cm))$order
+    col_order <- hclust(dist(t(consensus_cm)))$order
+    consensus_cm <- consensus_cm[match(rownames(consensus_cm)[row_order], rownames(consensus_cm)),match(colnames(consensus_cm)[col_order], colnames(consensus_cm))]
     consensus_cm_norm <- round(consensus_cm/apply(consensus_cm,1,max),3)
     consensus_df <- as.data.frame(consensus_cm_norm)
-    colnames(consensus_df) <- c("reference2","reference1","Cells")
-    plot = ggplot(data = consensus_df, aes(x=reference2, y=reference1, fill=Cells)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = element_text(angle = 90))
+    colnames(consensus_df) <- c("reference2","reference1","Relative Similarity")
+    plot = ggplot(data = consensus_df, aes=reference2, y=reference1, fill=Similarity)) + geom_tile() + scale_fill_gradientn(colors = c("blue", "white", "red")) + theme(axis.text.x = eleme(xnt_text(angle = 90),axis.text=element_text(size=14),axis.title=element_text(size=18),legend.title=element_text(size=14),legend.text=element_text(size=12))    plot
     plot
     ggsave("Reference1_vs_Reference2_RelationshipInference_Heatmap_Ensemble.png", width = 10, height = 10)
     message("Ensemble based learning and relationship inference completed")
