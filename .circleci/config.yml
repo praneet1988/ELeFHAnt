@@ -11,6 +11,4 @@ jobs:
       - run:
           name: Build package
           command: R CMD build .
-      - run:
-          name: Check package
-          command: R CMD check --no-manual --no-vignettes --no-build-vignettes --ignore-vignettes *tar.gz
+
