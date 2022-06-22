@@ -4,20 +4,28 @@
 \alias{ValidatePredictions}
 \title{ELeFHAnt Validate Predictions}
 \usage{
-ValidatePredictions(reference = NULL, query = NULL)
+ValidatePredictions(
+  species = NULL,
+  tissue = NULL,
+  query = NULL,
+  reference = NULL
+)
 }
 \arguments{
-\item{reference}{a processed Seurat Object with Celltypes column in metadata}
+\item{species}{human or mouse to select the C8 hallmark cell type gene sets}
+
+\item{tissue}{please check human_tissues or mouse_tissues if validatePredictions = TRUE}
 
 \item{query}{a processed seurat object with seurat_clusters column in metadata}
+
+\item{reference}{a processed seurat object with Celltypes column in metadata}
 }
 \value{
 GSEA result
 }
 \description{
-Validate Predictions is a function to validate celltype assignments. It uses Gene Set Enrichment Analysis (GSEA) to asses the enrichment.
-It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed
-seurat object with seurat_clusters column in metadata).
+Validate Predictions is a function to validate celltype assignments. It uses Gene Set Enrichment Analysis (GSEA) and cell type markers from CellMarker Database to let user assess celltype annotation/harmonization.
+It requires species, tissue and query dataset. For GSEA, ELeFHAnt uses C8 Hallmark Gene Sets and from CellMarker Database it uses markers curated based on experiments.
 }
 \author{
 Praneet Chaturvedi & Konrad Thorner

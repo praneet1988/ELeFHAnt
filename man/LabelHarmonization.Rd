@@ -9,14 +9,21 @@ LabelHarmonization(
   perform_integration = TRUE,
   integrated.atlas = NULL,
   downsample = TRUE,
-  downsample_to = 100,
+  downsample_to = 500,
   npcs = 30,
-  resolution = 0.5,
+  resolution = 0.8,
   classification.method = c("randomForest", "SVM", "Ensemble"),
-  crossvalidationSVM = 10,
+  crossvalidationSVM = 5,
   validatePredictions = TRUE,
   selectanchorfeatures = 2000,
-  ntree = 500
+  ntree = 500,
+  cost = 1,
+  k.anchor = 5,
+  k.filter = 200,
+  k.score = 30,
+  dims = 1:30,
+  species = NULL,
+  tissue = NULL
 )
 }
 \arguments{
@@ -28,22 +35,36 @@ LabelHarmonization(
 
 \item{downsample}{logical Indicator (TRUE or FALSE) to downsample Seurat objects or integrated seurat object, enabling fast computation}
 
-\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 100}}
+\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 500}}
 
-\item{npcs}{number of principal components to compute after integration}
+\item{npcs}{number of principal components to compute after integration \link{Default: 30}}
 
-\item{resolution}{value of the resolution parameter, decides size of cell communities.}
+\item{resolution}{value of the resolution parameter, decides size of cell communities. \link{Default: 0.8}}
 
 \item{classification.method}{choose classification method for learning and harmonizing celltypes.
 Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses learning robustness of both randomForest and SVM to predict)}
 
-\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model}
+\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model \link{Default: 5}}
 
 \item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis}
 
 \item{selectanchorfeatures}{number of anchor features to use for integrating datasets (Default: 2000)}
 
 \item{ntree}{number of trees randomForest classifier should build (Default: 500)}
+
+\item{cost}{cost of constraints violation (Default: 1)}
+
+\item{k.anchor}{How many neighbors (k) to use when picking anchors \link{Default: 5}}
+
+\item{k.filter}{How many neighbors (k) to use when filtering anchors \link{Default: 200}}
+
+\item{k.score}{How many neighbors (k) to use when scoring anchors \link{Default: 30}}
+
+\item{dims}{Which dimensions to use from the CCA to specify the neighbor search space \link{Default: 1:30}}
+
+\item{species}{human or mouse if validatePredictions = TRUE}
+
+\item{tissue}{please check human_tissues or mouse_tissues if validatePredictions = TRUE}
 }
 \value{
 integrated seurat object with harmonized celltypes added to meta.data of the object

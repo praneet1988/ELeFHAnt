@@ -8,13 +8,16 @@ CelltypeAnnotation(
   reference = NULL,
   query = NULL,
   downsample = FALSE,
-  downsample_to = 200,
+  downsample_to = 500,
   classification.method = c("randomForest", "SVM", "Ensemble"),
-  crossvalidationSVM = 10,
+  crossvalidationSVM = 5,
   validatePredictions = TRUE,
   selectvarfeatures = 2000,
   ntree = 500,
-  classification.approach = "ClassifyCells"
+  cost = 1,
+  classification.approach = "ClassifyCells",
+  species = NULL,
+  tissue = NULL
 )
 }
 \arguments{
@@ -24,21 +27,27 @@ CelltypeAnnotation(
 
 \item{downsample}{logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation. if classification.approach is set to "ClassifyCells_usingApproximation" query will be downsampled along with reference.}
 
-\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 100} in reference and query for Celltypes and seurat_clusters resspectively}
+\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 500}}
 
 \item{classification.method}{choose classification method for learning and predicting celltypes.
-Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)}
+Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)(}
 
-\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model}
+\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model (Default: 5)}
 
-\item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis}
+\item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis and assessing markers from CellMarker Database.}
 
 \item{selectvarfeatures}{number of variable features to select while training (default: 2000)}
 
 \item{ntree}{number of trees randomForest classifier should build (Default: 500)}
 
+\item{cost}{cost of constraints violation (Default: 1)}
+
 \item{classification.approach}{apprach to classify cells 1) ClassifyCells 2) ClassifyCells_usingApproximation. Default: ClassifyCells. We recommend using ClassifyCells_usingApproximation
 when reference has significantly less number of cells compared to query}
+
+\item{species}{human or mouse if validatePredictions = TRUE}
+
+\item{tissue}{please check human_tissues or mouse_tissues if validatePredictions = TRUE}
 }
 \value{
 query seurat object with predictions added to meta.data of the object

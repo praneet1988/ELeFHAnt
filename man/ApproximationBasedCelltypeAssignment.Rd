@@ -13,7 +13,10 @@ ApproximationBasedCelltypeAssignment(
   crossvalidationSVM = crossvalidationSVM,
   validatePredictions = validatePredictions,
   selectvarfeatures = selectvarfeatures,
-  ntree = ntree
+  ntree = ntree,
+  species = NULL,
+  tissue = NULL,
+  cost = cost
 )
 }
 \arguments{
@@ -23,18 +26,24 @@ ApproximationBasedCelltypeAssignment(
 
 \item{downsample}{logical Indicator (TRUE or FALSE) to downsample reference and query enabling fast computation}
 
-\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 100} in reference and query for Celltypes and seurat_clusters resspectively}
+\item{downsample_to}{a numerical value > 1 to downsample cells \link{Default: 500}}
 
 \item{classification.method}{choose classification method for learning and predicting celltypes.
 Choices: randomForest (decision trees), SVM (Support Vector Machines) or Ensemble (uses estimation robustness of both randomForest and SVM to predict)}
 
-\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model}
+\item{crossvalidationSVM}{if a integer value k>0 is specified, a k-fold cross validation on the training data is performed to assess the quality of the model (Default: 5)}
 
 \item{validatePredictions}{logical indicator (TRUE or FALSE) to asses predictions by deploying Gene set enrichment analysis}
 
-\item{selectvarfeatures}{number of variable features to select while training (default: 2000)}
+\item{selectvarfeatures}{number of variable features to select while training (Default: 2000)}
 
 \item{ntree}{number of trees randomForest classifier should build (Default: 500)}
+
+\item{species}{human or mouse if validatePredictions = TRUE}
+
+\item{tissue}{please check human_tissues or mouse_tissues if validatePredictions = TRUE}
+
+\item{cost}{cost of constraints violation (Default: 1)}
 }
 \value{
 query seurat object with predictions added to meta.data of the object
