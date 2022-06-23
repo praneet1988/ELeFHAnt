@@ -59,25 +59,25 @@ Deduce Relationship is a function used to infer the similarity between celltypes
 ## BenchmarkELeFHAnt Function
 Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions against scPred and Seurat's Label Transfer.
 
-# Celltype Annotation in detail
+## Celltype Annotation in detail
 Celltype annotation is a function to annotate celltypes in single cell datasets.
 
-## Requirements
+### Requirements
 It requires a reference dataset (a processed Seurat Object with Celltypes column in the metadata) and a query dataset (a processed Seurat object with seurat_clusters column in the metadata). One can choose from randomForest, SVM or Ensemble classifiction methods to learn celltypes from the reference dataset and then predict celltypes for the query dataset.
 
-## How to use the function?
-### Load Library ELeFHAnt
+### How to use the function?
+#### Load Library ELeFHAnt
 library(ELeFHAnt)
-### Assing parameters in the function
+#### Assing parameters in the function
 out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 5, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
 
-# Label Harmonization in detail
+## Label Harmonization in detail
 Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets.
 
-## Requirements
+### Requirements
 It requires a list of processed Seurat objects with a Celltypes column in the metadata or an integrated Seurat object (integrated Seurat object with Celltypes and seurat_clusters columns in the metadata). One can choose from randomForest, SVM or Ensemble classifiction methods to harmonize celltypes. Please note: DefaultAssay of each object should be set to "RNA".
 
-## How to use the function?
+### How to use the function?
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
@@ -87,38 +87,39 @@ Or Provide an integrated seurat object
   
 out = LabelHarmonization(perform_integration = FALSE, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 5, validatePredictions = TRUE, integrated.atlas = atlas, npcs = 30, resolution = 0.8, selectanchorfeatures = 2000, ntree = 500)
 
-# Deduce Relationship
+## Deduce Relationship function in detail
 Deduce Relationship is a function used primarily to infer the similarity between celltypes across single cell datasets. As the name suggests, any kind of relationship between cell metadata (seurat_clusters, Celltypes, idents etc.) could also be determined.
-## Requirements
+  
+### Requirements
 It requires two reference datasets (processed Seurat Object with Celltypes column in the metadata). One can choose from randomForest, SVM or Ensemble classifiction methods to learn celltypes from the reference dataset and find the best corresponding celltypes in the other reference dataset. 
 
-## How to use the function?
+### How to use the function?
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
 out = DeduceRelationship(reference1 = NULL, reference2 = NULL, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 5, selectvarfeatures = 2000)
   
-# BenchmarkELeFHAnt in detail
+## BenchmarkELeFHAnt function in detail
 Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions against scPred and Seurat's Label Transfer.
 
-## Requirements
+### Requirements
 It requires a reference dataset (a processed Seurat Object with Celltypes column in the metadata) and a query dataset (a processed Seurat object with seurat_clusters column in the metadata).
 
-## How to use the function?
+### How to use the function?
 ### Load Library ELeFHAnt
 library(ELeFHAnt)
 ### Assing parameters in the function
 out = BenchmarkELeFHAnt(reference = reference, query = query, downsample = TRUE, downsample_to = 500)
 
-# ELeFHAnt Reference datasets as plugins
+## ELeFHAnt Reference datasets as plugins
 Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship or Benchmark ELeFHAnt here: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
 
-# Gut Development Datasets used to showcase ELeFHAnt functionalities
+## Gut Development Datasets used to showcase ELeFHAnt functionalities
 To demonstrate all the functions of ELeFHAnt we utilize three datasets of early gut development as shown below, as well as an integrated dataset of all three. "GSE158702" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "E-MTAB-8901" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "E-MTAB-10187" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
 
 ![Graph](Examples/gut_datasets.png)
   
-# Celltype Annotation Example
+## Celltype Annotation Example
 
 To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and downsample = 300 [Approximation]
 
@@ -126,13 +127,13 @@ To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells
 ![Graph](Examples/CelltypeAnnotation_GutAtlas_Figure3.png)
 
 
-# Label Harmonization Example
+## Label Harmonization Example
 To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells). We integrated three datasets using Seurat's CCA based integration and then ran Label Harmonization (downsample = TRUE, downsample_to = 500) on the integrated object (~112k cells). Left panel shows all ~120 cell labels whereas right panel shows 33 granular cell labels assigned after harmonization.
   
 ### Harmonized Atlas ~112k cells
 ![Graph](Examples/LabelHarmonization.png)
 
-# Deduce Relationship Example
+## Deduce Relationship Example
 To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells). Parameters used: downsample = TRUE, downsample_to=300, classification.method="Ensemble"
 
 ### Relative Similarity among celltypes between two datasets
@@ -140,11 +141,11 @@ To demonstrate Deduce Relationship we used two datasets that were also uses in t
 
 The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We see that the related celltypes all make biological sense, such as all immune cells and their subtypes in reference2 being assigned to "Immune cells" reference1, and similarly mesenchyme subtypes being assigned to "Mesoderm 2".
 
-# Citation
+## Citation
 Please cite our preprint: https://www.biorxiv.org/content/10.1101/2021.09.07.459342v1 when using ELeFHAnt in your research.
 
-# Bugs/Issues
+## Bugs/Issues
 Please report bugs, issues and improvements using the issues section of the GitHub page.
 
-# Contribute to Code
+## Contribute to Code
 Please open a pull request to contribute to existing code in terms of improvements / new features / bug removal.
