@@ -1,10 +1,14 @@
 [![<praneet1988>](https://circleci.com/gh/praneet1988/ELeFHAnt.svg?style=shield)](https://github.com/praneet1988/ELeFHAnt)
 
 # ELeFHAnt
-Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with the flexibility of choosing a single machine learning based classifier or letting ELeFHAnt automatically use the power of  randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship.
+Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with the flexibility of choosing a single machine learning based classifier or letting ELeFHAnt automatically use the power of  randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship 4) Benchmark ELeFHAnt.
 
-## Version 1.1.2 is now available
-Improved CelltypeAnnotation function. Users can now choose the classification approach that ELeFHAnt should apply. 1) ClassifyCells 2) ClassifyCells_usingApproximation. We recommend using ClassifyCells_usingApproximation when reference has significantly less number of cells compared to query
+## Version 1.1.3 is now available
+* Improved speed (5X faster classification)
+* Validate Predictions using GSEA msigdb (https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp#C8) and CellMarkers Experimentally verified markers (http://bio-bigdata.hrbmu.edu.cn/CellMarker/)
+* Users can select species (human or mouse) and tissues of interest for predicted celltype Marker validation. [Dotplots and Feature plots are generated for both reference and query
+* Users now can compare ELeFHAnt predictions against Seurat's Label Transfer and scPred by using BenchmarkELeFHAnt function
+* A complete tutorial using PBMC datasets. Reference [https://www.nature.com/articles/ncomms14049] and query [https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz]
 
 ## Where to find previous versions
 Users can access ELeFHAnt previous releases from Releases section of GitHub [https://github.com/praneet1988/ELeFHAnt/releases]
@@ -15,6 +19,10 @@ library(devtools)
 devtools::install_github('praneet1988/ELeFHAnt')
 library(ELeFHAnt)
 ```
+
+## Tutorial using PBMC datasets
+https://rpubs.com/praneet1988/917589
+  
 ```
 If you encounter any problems, try manually installing from the .zip or .tar.gz file with "R CMD INSTALL". 
 ```
