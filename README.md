@@ -59,7 +59,7 @@ Deduce Relationship is a function used to infer the similarity between celltypes
 ## BenchmarkELeFHAnt Function
 Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions against scPred and Seurat's Label Transfer.
 
-## Celltype Annotation in detail
+## Celltype Annotation function in detail
 Celltype annotation is a function to annotate celltypes in single cell datasets.
 
 ### Requirements
@@ -71,7 +71,7 @@ library(ELeFHAnt)
 #### Assing parameters in the function
 out = CelltypeAnnotation(reference = reference.object, query = mydata.object, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 5, validatePredictions = TRUE, selectvarfeatures = 2000, ntree = 500, classification.approach = "ClassifyCells")
 
-## Label Harmonization in detail
+## Label Harmonization function in detail
 Label Harmonization is a function to harmonize cell labels (celltypes) across single cell datasets.
 
 ### Requirements
@@ -99,7 +99,7 @@ library(ELeFHAnt)
 ### Assing parameters in the function
 out = DeduceRelationship(reference1 = NULL, reference2 = NULL, downsample = TRUE, downsample_to = 500, classification.method = "Ensemble", crossvalidationSVM = 5, selectvarfeatures = 2000)
   
-## BenchmarkELeFHAnt function in detail
+## Benchmark ELeFHAnt function in detail
 Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions against scPred and Seurat's Label Transfer.
 
 ### Requirements
