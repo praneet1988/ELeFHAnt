@@ -19,13 +19,12 @@ library(devtools)
 devtools::install_github('praneet1988/ELeFHAnt')
 library(ELeFHAnt)
 ```
-
-## Tutorial using PBMC datasets
-https://rpubs.com/praneet1988/917589
-  
 ```
 If you encounter any problems, try manually installing from the .zip or .tar.gz file with "R CMD INSTALL". 
 ```
+
+## Tutorial using PBMC datasets
+https://rpubs.com/praneet1988/917589
 
 ## Developers
 ```
