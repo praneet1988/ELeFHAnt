@@ -1127,7 +1127,8 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
         fgsea_sets = msigdbr(species = "human", category = "C8")
         cellmarkers = read.table('all_cell_markers_Human.txt', sep="\t", header=T, check.names = F)
         cellmarkers_human = subset(cellmarkers, speciesType == "Human")
-        cellmarkers_experiment = subset(cellmarkers_human, markerResource == "Experiment")
+        #cellmarkers_experiment = subset(cellmarkers_human, markerResource == "Experiment")
+        cellmarkers_experiment = cellmarkers_human
     }
     if(species == "mouse")
     {
@@ -1135,7 +1136,8 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
         fgsea_sets = msigdbr(species = "mouse", category = "C8")
         cellmarkers = read.table('all_cell_markers_Mouse.txt', sep="\t", header=T, check.names = F)
         cellmarkers_mouse = subset(cellmarkers, speciesType == "Mouse")
-        cellmarkers_experiment = subset(cellmarkers_mouse, markerResource == "Experiment")
+        #cellmarkers_experiment = subset(cellmarkers_mouse, markerResource == "Experiment")
+        cellmarkers_experiment = cellmarkers_mouse
     }
 
     message('\nGSEA BASED VALIDATION\n')
@@ -1219,12 +1221,26 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                 if(length(genes) > 0)
                 {
                     check_status = intersect(genes, rownames(query))
-                    if(length(check_status) > 0)
+                    len_genes = length(check_status)
+                    if(len_genes > 10)
                     {
-                        DotPlot(query, features = genes, group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                        gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
+                        for (gs in 1:length(gene_sets_found)
+                        {
+                            DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                            filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                            ggsave(filename, width = 10, height = 10, dpi = 800)
+                            FeaturePlot(query, features = gene_sets_found[[gs]], order = T)
+                            filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                            ggsave(filename, width = 10, height = 10, dpi = 800)
+                        }
+                    }
+                    if(len_genes <= 10)
+                     {
+                        DotPlot(query, features = check_status, group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                         filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes DotPlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
-                        FeaturePlot(query, features = genes, order = T)
+                        FeaturePlot(query, features = check_status, order = T)
                         filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes FeaturePlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
                     }
@@ -1266,18 +1282,31 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                     }
                     if(length(genes) > 0)
                     {
-                        check_status = intersect(genes, rownames(reference))
-                        if(length(check_status) > 0)
+                        check_status = intersect(genes, rownames(query))
+                        len_genes = length(check_status)
+                        if(len_genes > 10)
                         {
-                            DotPlot(reference, features = genes, group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                            gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
+                            for (gs in 1:length(gene_sets_found)
+                            {
+                                DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                                filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                                ggsave(filename, width = 10, height = 10, dpi = 800)
+                                FeaturePlot(reference, features = gene_sets_found[[gs]], order = T)
+                                filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                                ggsave(filename, width = 10, height = 10, dpi = 800)
+                            }
+                        }
+                        if(len_genes <= 10)
+                        {
+                            DotPlot(reference, features = check_status, group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                             filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
-                            FeaturePlot(reference, features = genes, order = T)
+                            FeaturePlot(reference, features = check_status, order = T)
                             filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
-            
-                    }
+                     }
                 }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
             }
 
