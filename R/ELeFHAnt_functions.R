@@ -1143,7 +1143,7 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
     msigdbr_list = split(x = fgsea_sets$gene_symbol, f = fgsea_sets$gs_name)
     message ("Obtaining markers per annotated cluster")
     Idents(query) <- query$seurat_clusters
-    cluster_markers <- FindAllMarkers(query)
+    cluster_markers <- FindAllMarkers(query, max.cells.per.ident = 500)
     cluster_markers = data.frame(cluster_markers)
     cluster_markers = subset(cluster_markers, p_val_adj <= 0.05)
     top_cluster <- cluster_markers %>% group_by(cluster) %>% dplyr::slice(1:50)
@@ -1217,7 +1217,6 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
 	                genes_temp = c(genes_temp, list_genes)
                 }
                 genes_temp = unique(genes_temp)
-                genes = genes_temp[!is.na(genes_temp)]
                 genes = genes_temp[!is.na(genes_temp)]
                 if(length(genes) == 0)
                 {
