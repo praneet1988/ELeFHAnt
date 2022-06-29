@@ -5,7 +5,7 @@ Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) pr
 
 ## Version 1.1.3 is now available
 * Improved speed (5X faster classification)
-* Validate Predictions using GSEA msigdb [C8] (https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp#C8) and CellMarkers Experimentally verified markers (http://bio-bigdata.hrbmu.edu.cn/CellMarker/)
+* Validate Predictions using GSEA msigdb [C8] (https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp#C8) and CellMarkers Database markers (http://bio-bigdata.hrbmu.edu.cn/CellMarker/)
 * Users can select species (human or mouse) and tissues of interest for predicted celltype Marker validation. [Dotplots and Feature plots are generated for both reference and query]
 * Users now can compare ELeFHAnt predictions against Seurat's Label Transfer and scPred by using BenchmarkELeFHAnt function
 * A complete tutorial using PBMC datasets. Reference [https://www.nature.com/articles/ncomms14049] and query [https://cf.10xgenomics.com/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz]
