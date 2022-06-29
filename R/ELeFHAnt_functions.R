@@ -1235,10 +1235,10 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                         for (gs in 1:length(gene_sets_found))
                         {
                             DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                            filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], " Set", gs, " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                             FeaturePlot(query, features = gene_sets_found[[gs]], order = T, reduction = "umap")
-                            filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], " Set", gs, " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
                     }
@@ -1304,10 +1304,10 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                             for (gs in 1:length(gene_sets_found))
                             {
                                 DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                                filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                                filename = paste0(dir_create_Celltypes, celltypes[f], " Set", gs, " MarkerGenes DotPlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
                                 FeaturePlot(reference, features = gene_sets_found[[gs]], order = T, reduction = "umap")
-                                filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                                filename = paste0(dir_create_Celltypes, celltypes[f], " Set", gs, " MarkerGenes FeaturePlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
                             }
                         }
