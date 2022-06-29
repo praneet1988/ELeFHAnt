@@ -1225,7 +1225,7 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                     if(len_genes > 10)
                     {
                         gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
-                        for (gs in 1:length(gene_sets_found)
+                        for (gs in 1:length(gene_sets_found))
                         {
                             DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                             filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
@@ -1287,7 +1287,7 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                         if(len_genes > 10)
                         {
                             gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
-                            for (gs in 1:length(gene_sets_found)
+                            for (gs in 1:length(gene_sets_found))
                             {
                                 DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                                 filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
