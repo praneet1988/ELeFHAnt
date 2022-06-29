@@ -25,7 +25,7 @@ tidymodels_prefer()
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
-mouse_tissues = c("Bone marrow", "Taste bud", "Adipose tissue", "Undefined", "Meniscus", "Peyer patch", "Thyroid", "Lung", "Kidney", "Heart", "Skin", "Epidermis", "Spleen", "Brain", "Blood", "Small intestine", "Serum", "Peripheral blood", "Retina", "Cerebellum", "Esophagus", "Prostate", "Dermis", "Embryoid body", "Pancreas", "Ovary", "Inner nuclear layer of retina", "Ganglion cell layer of retina", "Umbilical cord", "White adipose tissue", "Lymph node", "Colon epithelium", "Cochlea", "Basilar membrane", "Hippocampus", "Colon", "Spinal cord", "Intestinal crypt", "Peritoneal cavity", "Submandibular gland", "Muscle", "Yolk sac", "Embryo", "Epithelium", "Umbilical cord blood", "Testis", "Skeletal muscle", "Heart muscle", "Ileum", "Inner Ear", "Mammary gland", "Embryonic stem cell", "Bone", "Thymus", "Lacrimal gland", "Liver", "Mesonephros", "Bronchiole", "Gonad", "Neural tube", "Hair follicle", "Stomach", "Intestine", "Mesenteric lymph node", "Carotid artery", "Lymphoid tissue", "Pancreatic islet", "Blood vessel", "Uterus", "Gastrointestinal tract", "Colorectum", "Artery", "Aorta", "Eye", "Corneal epithelium", "Fetal liver", "Breast", "Mammary epithelium", "Bladder")
+mouse_tissues = c('Adipose tissue', 'Airway epithelium', 'Aorta', 'Artery', 'Basilar membrane', 'Bladder', 'Blood', 'Blood vessel', 'Bone', 'Bone marrow', 'Brain', 'Breast', 'Bronchiole', 'Carotid artery', 'Cerebellum', 'Cochlea', 'Colon', 'Colon epithelium', 'Colorectum', 'Corneal epithelium', 'Dermis', 'Embryo', 'Embryoid body', 'Embryonic heart', 'Embryonic stem cell', 'Epidermis', 'Epithelium', 'Esophagus', 'Eye', 'Fetal liver', 'Ganglion cell layer of retina', 'Gastrointestinal tract', 'Gonad', 'Hair follicle', 'Heart', 'Heart muscle', 'Hippocampus', 'Ileum', 'Inner Ear', 'Inner nuclear layer of retina', 'Intestinal crypt', 'Intestine', 'Kidney', 'Lacrimal gland', 'Liver', 'Lung', 'Lymph node', 'Lymphoid tissue', 'Mammary epithelium', 'Mammary gland', 'Meniscus', 'Mesenteric lymph node', 'Mesonephros', 'Muscle', 'Neural tube', 'Ovary', 'Pancreas', 'Pancreatic islet', 'Peripheral blood', 'Peritoneal cavity', 'Peyer patch', 'Prostate', 'Retina', 'Serum', 'Skeletal muscle', 'Skin', 'Small intestine', 'Spinal cord', 'Spleen', 'Stomach', 'Submandibular gland', 'Taste bud', 'Testis', 'Thymus', 'Thyroid', 'Trachea', 'Umbilical cord', 'Umbilical cord blood', 'Undefined', 'Uterus', 'White adipose tissue', 'Yolk sac')
 
 #' ELeFHAnt human tisssues
 #' human tissues
@@ -51,8 +51,7 @@ mouse_tissues = c("Bone marrow", "Taste bud", "Adipose tissue", "Undefined", "Me
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
-human_tissues = c("Kidney", "Liver", "Endometrium", "Germ", "Corneal epithelium", "Placenta", "Periosteum", "Amniotic membrane", "Primitive streak", "Adipose tissue", "Scalp", "Heart", "Chorionic villus", "Brain", "Amniotic fluid", "Cartilage", "Bone", "Retina", "Peripheral blood", "Blood", "Tongue", "Gingiva", "Undefined", "Uterus", "Dental pulp", "Breast", "Stomach", "Nucleus pulposus", "Urine", "Pancreas", "Colon", "Gonad", "Testis", "Bone marrow", "Lung", "Embryo", "Skin", "Thymus", "Blood vessel", "Synovial fluid", "Periodontal ligament", "Lymph node", "Colorectum", "Pancreatic islet", "Synovium", "Oral mucosa", "Skeletal muscle", "Eye", "Esophagus", "Umbilical cord blood", "Hair follicle", "Ovarian follicle", "Limbal epithelium", "Oral cavity", "Nasal concha", "Oviduct", "Cornea", "Sclerocorneal tissue", "Intervertebral disc", "Plasma", "Embryoid body", "Inferior colliculus", "Ovary", "Ovarian cortex", "Subcutaneous adipose tissue", "Prostate", "Myocardium", "Deciduous tooth", "Salivary gland", "Tonsil", "Gastric gland", "Vagina", "Muscle", "Abdominal adipose tissue", "Venous blood", "Parotid gland", "Antecubital vein", "Intestinal crypt", "Endometrium stroma", "Foreskin", "Submandibular gland", "Retinal pigment epithelium", "Lymph", "Gastrointestinal tract", "Lymphoid tissue", "Renal glomerulus", "Pyloric gland", "Bladder", "Sputum", "Decidua", "Umbilical cord", "Sympathetic ganglion", "Alveolus", "Seminal plasma", "Serum", "Duodenum", "Rectum", "Fetal pancreas", "Embryonic stem cell")
-
+human_tissues = c('Abdominal adipose tissue', 'Adipose tissue', 'Adrenal gland', 'Adventitia', 'Airway epithelium', 'Alveolus', 'Amniotic fluid', 'Amniotic membrane', 'Antecubital vein', 'Anterior cruciate ligament', 'Artery', 'Ascites', 'Bladder', 'Blood', 'Blood vessel', 'Bone', 'Bone marrow', 'Brain', 'Breast', 'Bronchoalveolar system', 'Brown adipose tissue', 'Cartilage', 'Chorionic villus', 'Colon', 'Colorectum', 'Cornea', 'Corneal endothelium', 'Corneal epithelium', 'Corpus luteum', 'Decidua', 'Deciduous tooth', 'Dental pulp', 'Dermis', 'Dorsolateral prefrontal cortex', 'Duodenum', 'Embryo', 'Embryoid body', 'Embryonic brain', 'Embryonic prefrontal cortex', 'Embryonic stem cell', 'Endometrium', 'Endometrium stroma', 'Epithelium', 'Esophagus', 'Eye', 'Fat pad', 'Fetal brain', 'Fetal gonad', 'Fetal kidney', 'Fetal liver', 'Fetal pancreas', 'Foreskin', 'Gall bladder', 'Gastric corpus', 'Gastric epithelium', 'Gastric gland', 'Gastrointestinal tract', 'Germ', 'Gingiva', 'Gonad', 'Gut', 'Hair follicle', 'Heart', 'Hippocampus', 'Inferior colliculus', 'Intervertebral disc', 'Intestinal crypt', 'Intestine', 'Jejunum', 'Kidney', 'Lacrimal gland', 'Large intestine', 'Laryngeal squamous epithelium', 'Larynx', 'Ligament', 'Limbal epithelium', 'Liver', 'Lung', 'Lymph', 'Lymph node', 'Lymphoid tissue', 'Mammary epithelium', 'Mammary gland', 'Meniscus', 'Midbrain', 'Molar', 'Muscle', 'Myocardium', 'Myometrium', 'Nasal concha', 'Nasal epithelium', 'Nerve', 'Nucleus pulposus', 'Optic nerve', 'Oral cavity', 'Oral mucosa', 'Osteoarthritic cartilage', 'Ovarian cortex', 'Ovarian follicle', 'Ovary', 'Oviduct', 'Pancreas', 'Pancreatic acinar tissue', 'Pancreatic islet', 'Parotid gland', 'Periodontal ligament', 'Periosteum', 'Peripheral blood', 'Placenta', 'Plasma', 'Pleura', 'Pluripotent stem cell', 'Premolar', 'Primitive streak', 'Prostate', 'Pyloric gland', 'Rectum', 'Renal glomerulus', 'Retina', 'Retinal pigment epithelium', 'Salivary gland', 'Scalp', 'Sclerocorneal tissue', 'Seminal plasma', 'Serum', 'Single-cell sequencing', 'Sinonasal mucosa', 'Skeletal muscle', 'Skin', 'Small intestinal crypt', 'Small intestine', 'Spinal cord', 'Spleen', 'Splenic red pulp', 'Sputum', 'Stomach', 'Subcutaneous adipose tissue', 'Submandibular gland', 'Sympathetic ganglion', 'Synovial fluid', 'Synovium', 'Tendon', 'Testis', 'Thymus', 'Thyroid', 'Tongue', 'Tonsil', 'Tooth', 'Umbilical cord', 'Umbilical cord blood', 'Umbilical vein', 'Urine', 'Uterus', 'Vagina', 'Venous blood', 'Visceral adipose tissue', 'Vocal fold', 'Whartons jelly', 'White adipose tissue')
 
 #' ELeFHAnt Celltype Annotation
 #'
@@ -1211,8 +1210,14 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                 message(paste0('Generating DotPlot/FeaturePlot for experimental evidence based markers for:', celltypes[f], " in ", tissue[i]))
                 tempdata = subset(cellmarkers_tissue, cellName == celltypes[f])
                 splitlist = strsplit(noquote(tempdata$cellMarker), ", ")
-                print (unique(splitlist[[1]]))
-                genes_temp = unique(splitlist[[1]])
+                genes_temp = c()
+                for(xyz in 1:length(splitlist))
+                {
+	                list_genes = unique(splitlist[[xyz]])
+	                genes_temp = c(genes_temp, list_genes)
+                }
+                genes_temp = unique(genes_temp)
+                genes = genes_temp[!is.na(genes_temp)]
                 genes = genes_temp[!is.na(genes_temp)]
                 if(length(genes) == 0)
                 {
@@ -1220,6 +1225,8 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                 }
                 if(length(genes) > 0)
                 {
+                    dir_create_Celltypes = paste0(dir_create_Cellmarkers, celltypes[f], "/")
+                    dir.create(dir_create_Celltypes)
                     check_status = intersect(genes, rownames(query))
                     len_genes = length(check_status)
                     if(len_genes > 10)
@@ -1228,20 +1235,20 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                         for (gs in 1:length(gene_sets_found))
                         {
                             DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                            filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                             FeaturePlot(query, features = gene_sets_found[[gs]], order = T)
-                            filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
                     }
                     if(len_genes <= 10)
                      {
                         DotPlot(query, features = check_status, group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                        filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes DotPlot.png")
+                        filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes DotPlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
                         FeaturePlot(query, features = check_status, order = T)
-                        filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes FeaturePlot.png")
+                        filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes FeaturePlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
                     }
             
@@ -1273,8 +1280,13 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                     message(paste0('Generating DotPlot/FeaturePlot for experimental evidence based markers for:', celltypes[f], " in ", tissue[i]))
                     tempdata = subset(cellmarkers_tissue, cellName == celltypes[f])
                     splitlist = strsplit(noquote(tempdata$cellMarker), ", ")
-                    print (unique(splitlist[[1]]))
-                    genes_temp = unique(splitlist[[1]])
+                    genes_temp = c()
+                    for(xyz in 1:length(splitlist))
+                    {
+	                    list_genes = unique(splitlist[[xyz]])
+	                    genes_temp = c(genes_temp, list_genes)
+                    }
+                    genes_temp = unique(genes_temp)
                     genes = genes_temp[!is.na(genes_temp)]
                     if(length(genes) == 0)
                     {
@@ -1282,6 +1294,8 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                     }
                     if(length(genes) > 0)
                     {
+                        dir_create_Celltypes = paste0(dir_create_Cellmarkers, celltypes[f], "/")
+                        dir.create(dir_create_Celltypes)
                         check_status = intersect(genes, rownames(query))
                         len_genes = length(check_status)
                         if(len_genes > 10)
@@ -1290,20 +1304,20 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                             for (gs in 1:length(gene_sets_found))
                             {
                                 DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                                filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
+                                filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
                                 FeaturePlot(reference, features = gene_sets_found[[gs]], order = T)
-                                filename = paste0(dir_create_Cellmarkers, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
+                                filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
                             }
                         }
                         if(len_genes <= 10)
                         {
                             DotPlot(reference, features = check_status, group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
-                            filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes DotPlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                             FeaturePlot(reference, features = check_status, order = T)
-                            filename = paste0(dir_create_Cellmarkers, celltypes[f], " MarkerGenes FeaturePlot.png")
+                            filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
                      }
