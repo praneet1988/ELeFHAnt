@@ -1427,8 +1427,8 @@ randomForest_predictor <- function(train = NULL, test = NULL, train_label = NULL
 
 svm_predictor <- function(train = NULL, test = NULL, train_label = NULL, test_label = NULL, crossvalidationSVM = NULL, cost = NULL) {
     cost_est <- heuristicC(train)
-    svm_model <- svm_linear(cost = cost) %>% set_mode("classification") %>% set_engine("LiblineaR")
+    svm_model <- svm_linear(cost = cost_est) %>% set_mode("classification") %>% set_engine("LiblineaR")
     svm_Celltypes <- svm_model %>% fit(factor(train_label) ~ ., data=train)
-    svm_acc <- LiblineaR(data=train, target=train_label, type=1, cross = crossvalidationSVM, cost = cost)
+    svm_acc <- LiblineaR(data=train, target=train_label, type=1, cross = crossvalidationSVM, cost = cost_est)
     return(list(svm_Celltypes,svm_acc))
 }
