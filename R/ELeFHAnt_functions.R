@@ -1234,20 +1234,20 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                         gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
                         for (gs in 1:length(gene_sets_found))
                         {
-                            DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                            DotPlot(query, features = gene_sets_found[[gs]], group.by = "seurat_clusters", reduction = "umap") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                             filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
-                            FeaturePlot(query, features = gene_sets_found[[gs]], order = T)
+                            FeaturePlot(query, features = gene_sets_found[[gs]], order = T, reduction = "umap")
                             filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
                     }
                     if(len_genes <= 10)
                      {
-                        DotPlot(query, features = check_status, group.by = "seurat_clusters") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                        DotPlot(query, features = check_status, group.by = "seurat_clusters", reduction = "umap") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                         filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes DotPlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
-                        FeaturePlot(query, features = check_status, order = T)
+                        FeaturePlot(query, features = check_status, order = T, reduction = "umap")
                         filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes FeaturePlot.png")
                         ggsave(filename, width = 10, height = 10, dpi = 800)
                     }
@@ -1303,20 +1303,20 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL, ref
                             gene_sets_found = split(check_status, ceiling(seq_along(check_status) / 10))
                             for (gs in 1:length(gene_sets_found))
                             {
-                                DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                                DotPlot(reference, features = gene_sets_found[[gs]], group.by = "Celltypes", reduction = "umap") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                                 filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes DotPlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
-                                FeaturePlot(reference, features = gene_sets_found[[gs]], order = T)
+                                FeaturePlot(reference, features = gene_sets_found[[gs]], order = T, reduction = "umap")
                                 filename = paste0(dir_create_Celltypes, celltypes[f], "Set ", gs, " MarkerGenes FeaturePlot.png")
                                 ggsave(filename, width = 10, height = 10, dpi = 800)
                             }
                         }
                         if(len_genes <= 10)
                         {
-                            DotPlot(reference, features = check_status, group.by = "Celltypes") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
+                            DotPlot(reference, features = check_status, group.by = "Celltypes", reduction = "umap") + RotatedAxis() + ggtitle(celltypes[f]) + theme_classic()
                             filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes DotPlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
-                            FeaturePlot(reference, features = check_status, order = T)
+                            FeaturePlot(reference, features = check_status, order = T, reduction = "umap")
                             filename = paste0(dir_create_Celltypes, celltypes[f], " MarkerGenes FeaturePlot.png")
                             ggsave(filename, width = 10, height = 10, dpi = 800)
                         }
