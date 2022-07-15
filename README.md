@@ -1,5 +1,3 @@
-[![<praneet1988>](https://circleci.com/gh/praneet1988/ELeFHAnt.svg?style=shield)](https://github.com/praneet1988/ELeFHAnt)
-
 # ELeFHAnt
 Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It uses ensemble of randomForest (RF), Support Vector Machines (SVM) and Logistic Regression (LR). It has Six main functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship 4) Benchmark ELeFHAnt 5) CrossSpecies Conversion and 6) Validate Predictions
 
