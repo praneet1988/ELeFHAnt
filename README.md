@@ -23,8 +23,8 @@ library(ELeFHAnt)
 If you encounter any problems, try manually installing from the .zip or .tar.gz file with "R CMD INSTALL". 
 ```
 
-## Tutorial using PBMC datasets
-https://rpubs.com/praneet1988/917589
+## Complete Guided Tutorial using PBMC datasets
+https://rpubs.com/praneet1988/ELeFHAnt
 
 ## Developers
 ```
