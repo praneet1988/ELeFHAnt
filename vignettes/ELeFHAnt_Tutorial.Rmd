@@ -57,7 +57,7 @@ out.DR
 reference$Celltypes = reference$Celltype
 query$Celltypes = query$Celltype
 
-out.LH = LabelHarmonization(seurat.objects = c(reference, query), perform_integration = TRUE, integrated.atlas = NULL, downsample = FALSE, downsample_to = 1000, npcs = 30, resolution = 0.8, validatePredictions = FALSE, selectanchorfeatures = 2000, ntree = 500, k.anchor = 5, k.filter = 200, k.score = 30, dims = 1:30, species = NULL, tissue = NULL, annotationCol = "Celltypes")
+out.LH = LabelHarmonization(seurat.objects = c(reference, query), perform_integration = TRUE, integrated.atlas = NULL, downsample = TRUE, downsample_to = 1000, npcs = 30, resolution = 0.8, validatePredictions = FALSE, selectanchorfeatures = 2000, ntree = 500, k.anchor = 5, k.filter = 200, k.score = 30, dims = 1:30, species = NULL, tissue = NULL, annotationCol = "Celltypes")
 
 p1 = DimPlot(out.LH, group.by = "Celltypes", label = T, reduction = "umap", label.size = 6, repel = T) + NoLegend()
 p2 = DimPlot(out.LH, group.by = "ELeFHAnt_Ensemble_HarmonizedCelltype", label = T, reduction = "umap", label.size = 6, repel = T) + NoLegend()
