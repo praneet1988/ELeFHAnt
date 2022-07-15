@@ -111,36 +111,6 @@ library(ELeFHAnt)
 ### Assing parameters in the function
 out = BenchmarkELeFHAnt(reference = reference, query = query, downsample = TRUE, downsample_to = 500)
 
-## ELeFHAnt Reference datasets as plugins
-Download pre-processed reference datasets for Celltype Annotation, Label Harmonization or DeduceRelationship or Benchmark ELeFHAnt here: https://www.dropbox.com/sh/6hd2skriqqlokwp/AAAVol-_qPlCdA4DpERWjkeJa?dl=0
-
-## Gut Development Datasets used to showcase ELeFHAnt functionalities
-To demonstrate all the functions of ELeFHAnt we utilize three datasets of early gut development as shown below, as well as an integrated dataset of all three. "GSE158702" refers to a subset of terminal ileum (TI) data from an atlas for human fetal intestinal development called "STAR-FINDer" (https://www.sciencedirect.com/science/article/pii/S009286742031686X). "E-MTAB-8901" refers to a subset of duojejunum cell data from the Gut Cell Atlas, which also examines intestinal development from 6-10 weeks post-conception (https://www.sciencedirect.com/science/article/pii/S1534580720308868). Lastly, "E-MTAB-10187" refers a subset of fetal intestinal data from a multi-endodermal organ atlas (https://www.sciencedirect.com/science/article/pii/S0092867421005316). 
-
-![Graph](Examples/gut_datasets.png)
-  
-## Celltype Annotation Example
-
-To demostrate Celltype Annotation using ELeFHAnt we used E-MTAB-8901 (~21k cells) as the reference and E-MTAB-10187 (~77k cells) as the query. We used three scenarios 1) Reference was downsampled to 300 cells per celltype and query was downsampled to 200 cells per seurat_cluster. classiification.approach was set to "ClassifyCells" [Downsampled] 2) using all cells in reference and query. classiification.approach was set to "ClassifyCells" [All cells] and 3) using all cells in reference and query but setting using classification.approach = "ClassifyCells_usingApproximation" and downsample = 300 [Approximation]
-
-### ELeFHAnt Celltype Anntation
-![Graph](Examples/CelltypeAnnotation_GutAtlas_Figure3.png)
-
-
-## Label Harmonization Example
-To demonstrate LabelHarmonization we used three datasets: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells) 3) GSE158702 (~20k cells). We integrated three datasets using Seurat's CCA based integration and then ran Label Harmonization (downsample = TRUE, downsample_to = 500) on the integrated object (~112k cells). Left panel shows all ~120 cell labels whereas right panel shows 33 granular cell labels assigned after harmonization.
-  
-### Harmonized Atlas ~112k cells
-![Graph](Examples/LabelHarmonization.png)
-
-## Deduce Relationship Example
-To demonstrate Deduce Relationship we used two datasets that were also uses in the harmonization example: 1) E-MTAB-8901 (~21k cells) 2) E-MTAB-10187 (~77k cells). Parameters used: downsample = TRUE, downsample_to=300, classification.method="Ensemble"
-
-### Relative Similarity among celltypes between two datasets
-![Graph](Examples/DeduceRelationship_Example.png)
-
-The output of Deduce Relationship is a representation of the confusion matrix as a heatmap, with each square signifying how many cells of a given celltype in one reference were classified as a celltype in the other. It is normalized in such a way that each celltype in reference 2 has a red square that shows the most closely related celltype in reference 1. We see that the related celltypes all make biological sense, such as all immune cells and their subtypes in reference2 being assigned to "Immune cells" reference1, and similarly mesenchyme subtypes being assigned to "Mesoderm 2".
-
 ## Citation
 Please cite our preprint: https://www.biorxiv.org/content/10.1101/2021.09.07.459342v1 when using ELeFHAnt in your research.
 
