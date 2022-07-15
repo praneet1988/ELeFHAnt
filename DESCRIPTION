@@ -37,7 +37,8 @@ Imports:
     LiblineaR,
     caTools,
     reshape2,
-    biomaRt
+    biomaRt,
+    readxl
 Depends:
     Seurat,
     dplyr,
@@ -58,6 +59,7 @@ Depends:
     caTools,
     reshape2,
     biomaRt,
+    readxl,
     R (>= 2.10)
 Suggests: 
     rmarkdown,

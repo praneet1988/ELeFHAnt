@@ -16,12 +16,12 @@
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
@@ -45,12 +45,12 @@ mouse_tissues = c("Adipose tissue", "Adrenal gland", "Adventitia", "Afferent art
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
@@ -77,12 +77,12 @@ human_tissues = c("Abdomen", "Abdominal adipose tissue", "Abdominal fat pad", "A
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation.
@@ -297,12 +297,12 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param seurat.objects a list of processed seurat objects (please set Default Assay to "RNA") with Celltypes column in their respective meta.data to perform integration on
 #' @param perform_integration logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 #' @param integrated.atlas an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE
@@ -475,12 +475,12 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = FALSE
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param reference1 a processed Seurat Object with Celltypes column in metadata
 #' @param reference2 a processed seurat object with Celltypes column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference1 and reference2, enabling fast computation
@@ -694,12 +694,12 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param species human or mouse to select the C8 hallmark cell type gene sets
 #' @param tissue please check human_tissues or mouse_tissues if validatePredictions = TRUE
 #' @param query a processed seurat object with seurat_clusters column in metadata
@@ -727,26 +727,48 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
     
     if(species == "human")
     {
-        data("cellmarkers_human_v2")
         fgsea_sets = msigdbr(species = "human", category = "C8")
-        cellmarkers = cellmarkers_human_v2
-        cellmarkers = data.frame(cellmarkers)
-        cellmarkers_human = subset(cellmarkers, Species == "Human")
-        cellmarkers_experiment = subset(cellmarkers_human, Marker.source == "Experiment")
+        if(file.exists("Cell_marker_Human.xlsx"))
+        {
+            cellmarkers = read_excel('Cell_marker_Human.xlsx')
+            cellmarkers = data.frame(cellmarkers)
+            cellmarkers_human = subset(cellmarkers, Species == "Human")
+            cellmarkers_experiment = subset(cellmarkers_human, Marker.source == "Experiment")
+        }
+        else
+        {
+            download.file('https://github.com/praneet1988/ELeFHAnt/raw/main/Cell_marker_Human.xlsx', destfile = "Cell_marker_Human.xlsx")
+            cellmarkers = read_excel('Cell_marker_Human.xlsx')
+            cellmarkers = data.frame(cellmarkers)
+            cellmarkers_human = subset(cellmarkers, Species == "Human")
+            cellmarkers_experiment = subset(cellmarkers_human, Marker.source == "Experiment")
+        }
+        
     }
     if(species == "mouse")
     {
-        data("cellmarkers_mouse_v2")
         fgsea_sets = msigdbr(species = "mouse", category = "C8")
-        cellmarkers = cellmarkers_mouse_v2
-        cellmarkers = data.frame(cellmarkers)
-        cellmarkers_mouse = subset(cellmarkers, Species == "Mouse")
-        cellmarkers_experiment = subset(cellmarkers_mouse, Marker.source == "Experiment")
+        if(file.exists("Cell_marker_Mouse.xlsx"))
+        {
+            cellmarkers = read_excel('Cell_marker_Mouse.xlsx')
+            cellmarkers = data.frame(cellmarkers)
+            cellmarkers_mouse = subset(cellmarkers, Species == "Mouse")
+            cellmarkers_experiment = subset(cellmarkers_mouse, Marker.source == "Experiment")
+        }
+        else
+        {
+            download.file('https://github.com/praneet1988/ELeFHAnt/raw/main/Cell_marker_Mouse.xlsx', destfile = "Cell_marker_Mouse.xlsx")
+            cellmarkers = read_excel('Cell_marker_Mouse.xlsx')
+            cellmarkers = data.frame(cellmarkers)
+            cellmarkers_mouse = subset(cellmarkers, Species == "Mouse")
+            cellmarkers_experiment = subset(cellmarkers_mouse, Marker.source == "Experiment")
+        }
     }
 
     message('\nGSEA BASED VALIDATION\n')
     msigdbr_list = split(x = fgsea_sets$gene_symbol, f = fgsea_sets$gs_name)
     message ("Obtaining markers per annotated cluster")
+    DefaultAssay(query) = "RNA"
     Idents(query) <- query$seurat_clusters
     cluster_markers <- FindAllMarkers(query, max.cells.per.ident = 500)
     cluster_markers = data.frame(cluster_markers)
@@ -871,12 +893,12 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param seurat.objects one or more seurat objects
 #' @param species_from current species: human, mouse, rhesus, zebrafish, chicken and rat
 #' @param format_from which format genes are present in the object: ensembl or symbol
@@ -977,12 +999,12 @@ CrossSpecies_Conversion <- function(seurat.objects = c(), species_from = NULL, s
 #' @import harmony
 #' @import scater
 #' @import parsnip
-#' @import hrbrthemes
 #' @import ranger
 #' @import LiblineaR
 #' @import caTools
 #' @import biomaRt
 #' @import reshape2
+#' @import readxl
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation.
