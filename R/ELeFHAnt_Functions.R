@@ -774,7 +774,8 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
     cluster_markers = data.frame(cluster_markers)
     cluster_markers = subset(cluster_markers, p_val_adj <= 0.05)
     top_cluster <- cluster_markers
-    marker_genes = unique(cluster_markers$gene)
+    top_cluster_onlyTop25 <- cluster_markers %>% group_by(cluster) %>% dplyr::slice(1:25)
+    marker_genes = unique(top_cluster_onlyTop25$gene)
     message ("Performing Gene Set Enrichment Analysis (GSEA) using gene sets from C8 Hallmark MsigDB")
     iter = length(unique(top_cluster$cluster))-1
     gsea.res.return <- c()
@@ -824,6 +825,7 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
         dir_create_Cellmarkers = paste0(dir_create_Cellmarkers.temp.query, tissue[i], "/")
         dir.create(dir_create_Cellmarkers)
         cellmarkers_tissue = subset(cellmarkers_experiment, Tissue.type == tissue[i])
+        cellmarkers_tissue <- cellmarkers_tissue[cellmarkers_tissue$Marker %in% marker_genes, ]
         celltypes = unique(cellmarkers_tissue$Cell.name)
         for(f in 1:length(celltypes))
         {
