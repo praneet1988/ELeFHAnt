@@ -43,13 +43,13 @@ Logistic regression estimates the probability of an event occurring, such as vot
 ELeFHAnt provides users the ability to use ensemble learning for classification using three classifiers.
 
 ## Celltype Annotation Function
-Celltype annotation is a function used to annotate celltypes in single cell datasets. It requires a reference dataset (a processed Seurat Object with Celltypes column in metadata) and a query dataset (a processed seurat object with seurat_clusters column in metadata). One can choose from randomForest, SVM or Ensemble classifiction methods to learn celltypes from the reference dataset and then predict celltypes for query dataset.
+Celltype annotation is a function used to annotate celltypes in single cell datasets. It requires a reference dataset (a processed Seurat Object) and a query dataset (a processed seurat object with seurat_clusters column in metadata).
 
 ## Label Harmonization Function
-Label Harmonization is a function used to harmonize cell labels (celltypes) across single cell datasets. It requires a list of processed Seurat Objects with a Celltypes column in metadata or an integrated seurat object (seurat object with Celltypes and seurat_clusters columns in the metadata). One can choose from randomForest, SVM or Ensemble classifiction methods.
+Label Harmonization is a function used to harmonize cell labels (celltypes) across single cell datasets. It requires a list of processed Seurat Objects or an integrated seurat object.
 
 ## Deduce Relationship Function
-Deduce Relationship is a function used to infer the similarity between celltypes across single cell datasets. The output is a heatmap that shows which celltype in one reference best corresponds to a celltype in another reference. It requires two reference datasets (both processed Seurat Objects with Celltypes columns in the metadata). One can choose from randomForest, SVM or Ensemble classifiction methods.
+Deduce Relationship is a function used to infer the relative similarity between metadata of interest (MOI) across single cell datasets. The output is a heatmap that shows how MOI in one reference best corresponds to MOI in another reference. It requires two reference datasets (both processed Seurat Objects).
   
 ## BenchmarkELeFHAnt Function
 Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions against scPred and Seurat's Label Transfer.
