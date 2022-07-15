@@ -3,6 +3,9 @@
 # ELeFHAnt
 Ensemble Learning for Harmonization and Annotation of Single Cells (ELeFHAnt) provides an easy to use R package for users to annotate clusters of single cells, harmonize labels across single cell datasets to generate a unified atlas and infer relationship among celltypes between two datasets. It provides users with the flexibility of choosing a single machine learning based classifier or letting ELeFHAnt automatically use the power of  randomForest and SVM (Support Vector Machines) to make predictions. It has three functions 1) CelltypeAnnotation 2) LabelHarmonization 3) DeduceRelationship 4) Benchmark ELeFHAnt.
 
+## ELeFHAnt Model
+![Graph](ELeFHAnt.jpeg)
+
 ## Version 1.1.3 is now available
 * Improved speed (5X faster classification)
 * Validate Predictions using GSEA msigdb [C8] (https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp#C8) and CellMarkers Database markers (http://bio-bigdata.hrbmu.edu.cn/CellMarker/)
@@ -34,9 +37,6 @@ GitHub Username: praneet1988
 Konrad Thorner (MS Bioinformatics) : Analyst Bioinformatics, Cincinnati Children's Hospital and Medical Center, OH - USA
 GitHub Username: kthorner
 ```
-
-## ELeFHAnt Model
-![Graph](ELeFHAnt.png)
 
 ## Random Forest
 Random Forests is a powerful tool used extensively across a multitude of fields. It is based on generating a large number of decision trees, each constructed using a different subset of your training set. These subsets are usually selected by sampling at random and with replacement from the original data set. The decision trees are then used to identify a classification consensus by selecting the most common output.
