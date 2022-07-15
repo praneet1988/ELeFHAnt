@@ -727,18 +727,18 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
     
     if(species == "human")
     {
-        data("human_cellmarkers")
+        data("cellmarkers_human_v2")
         fgsea_sets = msigdbr(species = "human", category = "C8")
-        cellmarkers = data("cellmarkers_human_v2")
+        cellmarkers = cellmarkers_human_v2
         cellmarkers = data.frame(cellmarkers)
         cellmarkers_human = subset(cellmarkers, Species == "Human")
         cellmarkers_experiment = subset(cellmarkers_human, Marker.source == "Experiment")
     }
     if(species == "mouse")
     {
-        data("mouse_cellmarkers")
+        data("cellmarkers_mouse_v2")
         fgsea_sets = msigdbr(species = "mouse", category = "C8")
-        cellmarkers = data("cellmarkers_mouse_v2")
+        cellmarkers = cellmarkers_mouse_v2
         cellmarkers = data.frame(cellmarkers)
         cellmarkers_mouse = subset(cellmarkers, Species == "Mouse")
         cellmarkers_experiment = subset(cellmarkers_mouse, Marker.source == "Experiment")
