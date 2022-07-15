@@ -190,7 +190,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
     }
     message('Preparing train and test datasets from reference and query')
     reference_matrix = reference_use[['RNA']]@data
-    reference_matrix = t(reference_matrix)
+    reference_matrix = t(as.matrix(reference_matrix))
     reference_matrix = data.frame(reference_matrix, stringsAsFactors = FALSE)
     num_features = ncol(reference_matrix)
     reference_matrix$Celltypes = reference_use@meta.data[,annotationCol]
@@ -200,7 +200,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
     train_label = reference_matrix$Celltypes
 
     query_matrix = query_use[['RNA']]@data
-    query_matrix = t(query_matrix)
+    query_matrix = t(as.matrix(query_matrix))
     query_matrix = data.frame(query_matrix, stringsAsFactors = FALSE)
     num_features = ncol(query_matrix)
     query_matrix$seurat_clusters = query_use$seurat_clusters
@@ -383,7 +383,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = FALSE
     }
     message ("Generating train and test datasets using stratification -- 70% for training & 30% for testing")
     integrated_data <- integrated.use[['integrated']]@scale.data
-    integrated_data <- t(integrated_data)
+    integrated_data <- t(as.matrix(integrated_data))
     integrated_data <- data.frame(integrated_data)
     num_features <- ncol(integrated_data)
     message (paste0("Number of Anchor Features selected:", num_features))
@@ -583,7 +583,7 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
   
   message('Preparing train and test datasets from reference1 and reference2')
   reference1_matrix = reference1_use[['RNA']]@data
-  reference1_matrix = t(reference1_matrix)
+  reference1_matrix = t(as.matrix(reference1_matrix))
   reference1_matrix = data.frame(reference1_matrix, stringsAsFactors = FALSE)
   num_features = ncol(reference1_matrix)
   reference1_matrix$Annotation1 = reference1_use@meta.data[,annotationCol_ref1]
@@ -593,7 +593,7 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
   train_label = reference1_matrix$Annotation1
 
   reference2_matrix = reference2_use[['RNA']]@data
-  reference2_matrix = t(reference2_matrix)
+  reference2_matrix = t(as.matrix(reference2_matrix))
   reference2_matrix = data.frame(reference2_matrix, stringsAsFactors = FALSE)
   num_features = ncol(reference2_matrix)
   reference2_matrix$Annotation2 = reference2_use@meta.data[,annotationCol_ref2]

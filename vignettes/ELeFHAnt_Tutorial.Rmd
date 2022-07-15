@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(ELeFHAnt)
+library(Matrix)
 ```
 ```{r Read Data}
 data("reference_PBMC")
@@ -32,7 +33,7 @@ query = RunUMAP(query, dims = 1:20)
 ```
 
 ```{r Celltype Annotation}
-out.CelltypeAnnotation = CelltypeAnnotation(reference = reference, query = query, downsample = TRUE, downsample_to = 1000, classification.method = "Ensemble", validatePredictions = FALSE)
+out.CelltypeAnnotation = CelltypeAnnotation(reference = reference, query = query, downsample = TRUE, downsample_to = 1000, validatePredictions = FALSE, annotationCol = "Celltype")
 
 p1 = DimPlot(out.CelltypeAnnotation, group.by = "seurat_clusters", label = T, reduction = "umap", label.size = 6, repel = T) + NoLegend()
 p2 = DimPlot(out.CelltypeAnnotation, group.by = "ELeFHAnt_Ensemble_CelltypePrediction", label = T, reduction = "umap", label.size = 6, repel = T) + NoLegend()
