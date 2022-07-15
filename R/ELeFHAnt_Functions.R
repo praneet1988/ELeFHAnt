@@ -22,6 +22,7 @@
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
@@ -51,6 +52,7 @@ mouse_tissues = c("Adipose tissue", "Adrenal gland", "Adventitia", "Afferent art
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @export
 #' @author Praneet Chaturvedi & Konrad Thorner
 #'
@@ -83,6 +85,7 @@ human_tissues = c("Abdomen", "Abdominal adipose tissue", "Abdominal fat pad", "A
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation.
@@ -190,7 +193,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
     }
     message('Preparing train and test datasets from reference and query')
     reference_matrix = reference_use[['RNA']]@data
-    reference_matrix = t(as.matrix(reference_matrix))
+    reference_matrix = Matrix::t(reference_matrix)
     reference_matrix = data.frame(reference_matrix, stringsAsFactors = FALSE)
     num_features = ncol(reference_matrix)
     reference_matrix$Celltypes = reference_use@meta.data[,annotationCol]
@@ -200,7 +203,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
     train_label = reference_matrix$Celltypes
 
     query_matrix = query_use[['RNA']]@data
-    query_matrix = t(as.matrix(query_matrix))
+    query_matrix = Matrix::t(query_matrix)
     query_matrix = data.frame(query_matrix, stringsAsFactors = FALSE)
     num_features = ncol(query_matrix)
     query_matrix$seurat_clusters = query_use$seurat_clusters
@@ -303,6 +306,7 @@ CelltypeAnnotation <- function(reference = NULL, query = NULL, downsample = TRUE
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param seurat.objects a list of processed seurat objects (please set Default Assay to "RNA") with Celltypes column in their respective meta.data to perform integration on
 #' @param perform_integration logical Indicator (TRUE or FALSE) to perform integration using list of seurat.objects
 #' @param integrated.atlas an integrated seurat object with CellTypes and seurat_clusters column in meta.data. Required if perform_integration = FALSE
@@ -383,7 +387,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = FALSE
     }
     message ("Generating train and test datasets using stratification -- 70% for training & 30% for testing")
     integrated_data <- integrated.use[['integrated']]@scale.data
-    integrated_data <- t(as.matrix(integrated_data))
+    integrated_data <- Matrix::t(integrated_data)
     integrated_data <- data.frame(integrated_data)
     num_features <- ncol(integrated_data)
     message (paste0("Number of Anchor Features selected:", num_features))
@@ -481,6 +485,7 @@ LabelHarmonization <- function(seurat.objects = c(), perform_integration = FALSE
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param reference1 a processed Seurat Object with Celltypes column in metadata
 #' @param reference2 a processed seurat object with Celltypes column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference1 and reference2, enabling fast computation
@@ -583,7 +588,7 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
   
   message('Preparing train and test datasets from reference1 and reference2')
   reference1_matrix = reference1_use[['RNA']]@data
-  reference1_matrix = t(as.matrix(reference1_matrix))
+  reference1_matrix = Matrix::t(reference1_matrix)
   reference1_matrix = data.frame(reference1_matrix, stringsAsFactors = FALSE)
   num_features = ncol(reference1_matrix)
   reference1_matrix$Annotation1 = reference1_use@meta.data[,annotationCol_ref1]
@@ -593,7 +598,7 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
   train_label = reference1_matrix$Annotation1
 
   reference2_matrix = reference2_use[['RNA']]@data
-  reference2_matrix = t(as.matrix(reference2_matrix))
+  reference2_matrix = Matrix::t(reference2_matrix)
   reference2_matrix = data.frame(reference2_matrix, stringsAsFactors = FALSE)
   num_features = ncol(reference2_matrix)
   reference2_matrix$Annotation2 = reference2_use@meta.data[,annotationCol_ref2]
@@ -700,6 +705,7 @@ DeduceRelationship <- function(reference1 = NULL, reference2 = NULL, downsample 
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param species human or mouse to select the C8 hallmark cell type gene sets
 #' @param tissue please check human_tissues or mouse_tissues if validatePredictions = TRUE
 #' @param query a processed seurat object with seurat_clusters column in metadata
@@ -826,6 +832,10 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
         dir.create(dir_create_Cellmarkers)
         cellmarkers_tissue = subset(cellmarkers_experiment, Tissue.type == tissue[i])
         cellmarkers_tissue <- cellmarkers_tissue[cellmarkers_tissue$Marker %in% marker_genes, ]
+        if(is.null(cellmarkers_tissue))
+        {
+            stop('CellMarker Database Validation: Stopped! None query cluster markers present in Cellmarker')
+        }
         celltypes = unique(cellmarkers_tissue$Cell.name)
         for(f in 1:length(celltypes))
         {
@@ -901,6 +911,7 @@ ValidatePredictions <- function(species = NULL, tissue = NULL, query = NULL) {
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param seurat.objects one or more seurat objects
 #' @param species_from current species: human, mouse, rhesus, zebrafish, chicken and rat
 #' @param format_from which format genes are present in the object: ensembl or symbol
@@ -1007,6 +1018,7 @@ CrossSpecies_Conversion <- function(seurat.objects = c(), species_from = NULL, s
 #' @import biomaRt
 #' @import reshape2
 #' @import readxl
+#' @import Matrix
 #' @param reference a processed Seurat Object with Celltypes column in metadata
 #' @param query a processed seurat object with seurat_clusters column in metadata
 #' @param downsample logical Indicator (TRUE or FALSE) to downsample reference, enabling fast computation.

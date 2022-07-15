@@ -38,7 +38,8 @@ Imports:
     caTools,
     reshape2,
     biomaRt,
-    readxl
+    readxl,
+    Matrix
 Depends:
     Seurat,
     dplyr,
@@ -60,6 +61,7 @@ Depends:
     reshape2,
     biomaRt,
     readxl,
+    Matrix,
     R (>= 2.10)
 Suggests: 
     rmarkdown,
