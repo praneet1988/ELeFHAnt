@@ -55,7 +55,7 @@ Benchmark ELeFHAnt is a function to compare ELeFHAnt celltype predictions agains
 ## CrossSpecies Conversion Function
 CrossSpecies Conversion takes one or more datasets and maps their genes to orthologs in other species. The datasets are updated with the new gene names, ensuring they have the same set of features prior to using the other functions. This enables users to, for example, use a mouse reference to annotate a human query. Human, mouse, rat, rhesus, chicken, and zebrafish options are provided. It can also convert between ensembl gene ids and gene symbol formats.
 
-This function uses the package biomaRt to map genes to each other, and therefore requires an internet connection. Please note that certain assumptions are made in the conversion process, i.e. for one-to-many or many-to-one mappings only the first is kept and the rest are removed. Additionally some genes may not map to anything, and in all these cases the genes without matches are removed and the dataset is reprocessed in Seurat. Also note that new gene names are applied only to the RNA assay and therefore CrossSpecies Conversion should be applied prior to integration.
+This function uses the package biomaRt to map genes to one other, and therefore requires an internet connection. Please note that some genes may not map to anything, and for one-to-many or many-to-one mappings only the first is kept and the rest are ignored. Any genes without matches will be removed, and the dataset is then reprocessed in Seurat. 
 
 
 ## Developers
