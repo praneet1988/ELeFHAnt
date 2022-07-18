@@ -928,15 +928,16 @@ CrossSpecies_Conversion <- function(seurat.objects = c(), species_from = NULL, s
     species_from = species_to
   }
   print(paste0("Converting genes from ", species_from, " ", format_from, " to ", species_to, " ", format_to))
+  print("Retrieving data from Ensembl database")
   if (species_from == "human" | species_to == "human") {
-        human <- useMart('ensembl', dataset = 'hsapiens_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
-    }
-    if (species_from == "mouse" | species_to == "mouse") {
-        mouse <- useMart('ensembl', dataset = 'mmusculus_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
-    }
-    if (species_from == "rhesus" | species_to == "rhesus") {
-        rhesus <- useMart('ensembl', dataset = 'mmulatta_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
-    }
+    human <- useMart('ensembl', dataset = 'hsapiens_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
+  }
+  if (species_from == "mouse" | species_to == "mouse") {
+    mouse <- useMart('ensembl', dataset = 'mmusculus_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
+  }
+  if (species_from == "rhesus" | species_to == "rhesus") {
+    rhesus <- useMart('ensembl', dataset = 'mmulatta_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
+  }
   if (species_from == "zebrafish" | species_to == "zebrafish") {
     zebrafish <- useMart('ensembl', dataset = 'drerio_gene_ensembl', host = "https://dec2021.archive.ensembl.org/")
   }
@@ -956,41 +957,41 @@ CrossSpecies_Conversion <- function(seurat.objects = c(), species_from = NULL, s
   } else if (format_to == "symbol") {
     format_to = "Gene.name.1"
   }
-    gene_table <- getLDS(mart = get(species_from), attributes = c('ensembl_gene_id','external_gene_name'), martL = get(species_to), attributesL = c('ensembl_gene_id','external_gene_name'))
-    gene_table <- gene_table[,c(format_from,format_to)]
-    gene_table <- gene_table[gene_table[,format_to] != "",]
-    gene_table <- gene_table[gene_table[,format_from] != "",]
-    gene_table <- distinct_at(gene_table,format_to,.keep_all = T)
-    gene_table <- distinct_at(gene_table,format_from,.keep_all = T)
-    new.seurat.objects <- c()
-    seurat.objects <- list(seurat.objects)
-    for (seurat.object in seurat.objects) {
-        DefaultAssay(seurat.object) <- "RNA"
-        matches <- gene_table
-        genes <- rownames(seurat.object)
-        genes_start <- length(genes)
-        print(paste0("Genes before: ", genes_start))
-        seurat.object <- seurat.object[genes %in% matches[,format_from],]
-        genes <- rownames(seurat.object)
-        genes_end <- length(genes)
-        print(paste0("Genes after: ", genes_end))
-        matches <- matches[match(genes,matches[,format_from]),]
-        new_genes <- matches[,format_to]
-        seurat.object@assays$RNA@counts@Dimnames[[1]] <- new_genes
-        seurat.object@assays$RNA@data@Dimnames[[1]] <- new_genes
-        rownames(seurat.object@assays$RNA@meta.features) <- new_genes
-        if (genes_start != genes_end) {
-        seurat.object <- NormalizeData(seurat.object)
-        seurat.object <- FindVariableFeatures(seurat.object)
-        seurat.object <- ScaleData(seurat.object)
-        seurat.object <- RunPCA(seurat.object)
-        seurat.object <- FindNeighbors(seurat.object, dims = 1:20)
-        seurat.object <- FindClusters(seurat.object, resolution = 0.8)
-        seurat.object <- RunUMAP(seurat.object, dims = 1:20)
-        }
-        new.seurat.objects <- c(new.seurat.objects,seurat.object)
+  gene_table <- getLDS(mart = get(species_from), attributes = c('ensembl_gene_id','external_gene_name'), martL = get(species_to), attributesL = c('ensembl_gene_id','external_gene_name'))
+  gene_table <- gene_table[,c(format_from,format_to)]
+  gene_table <- gene_table[gene_table[,format_to] != "",]
+  gene_table <- gene_table[gene_table[,format_from] != "",]
+  gene_table <- distinct_at(gene_table,format_to,.keep_all = T)
+  gene_table <- distinct_at(gene_table,format_from,.keep_all = T)
+  new.seurat.objects <- c()
+  for (seurat.object in seurat.objects) {
+    print(paste0("Processing dataset ",length(new.seurat.objects)+1))
+    DefaultAssay(seurat.object) <- "RNA"
+    matches <- gene_table
+    genes <- rownames(seurat.object)
+    genes_start <- length(genes)
+    print(paste0("Number of genes at start: ", genes_start))
+    seurat.object <- seurat.object[genes %in% matches[,format_from],]
+    genes <- rownames(seurat.object)
+    genes_end <- length(genes)
+    print(paste0("Number of genes successfully converted: ", genes_end))
+    matches <- matches[match(genes,matches[,format_from]),]
+    new_genes <- matches[,format_to]
+    seurat.object@assays$RNA@counts@Dimnames[[1]] <- new_genes
+    seurat.object@assays$RNA@data@Dimnames[[1]] <- new_genes
+    rownames(seurat.object@assays$RNA@meta.features) <- new_genes
+    if (genes_start != genes_end) {
+      seurat.object <- NormalizeData(seurat.object)
+      seurat.object <- FindVariableFeatures(seurat.object)
+      seurat.object <- ScaleData(seurat.object)
+      seurat.object <- RunPCA(seurat.object)
+      seurat.object <- FindNeighbors(seurat.object, dims = 1:20)
+      seurat.object <- FindClusters(seurat.object, resolution = 0.8)
+      seurat.object <- RunUMAP(seurat.object, dims = 1:20)
     }
-    return(new.seurat.objects)
+    new.seurat.objects <- c(new.seurat.objects,seurat.object)
+  }
+  return(new.seurat.objects)
 }
 
 #' Benchmark ELeFHAnt against scPred and Label Transfer
